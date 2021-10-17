@@ -1,13 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class TabButton extends StatefulWidget {
+class TabButtonWidget extends StatefulWidget {
   final bool isSelected;
   final String image;
   final String selectedImage;
   final VoidCallback onTap;
 
-  TabButton(
+  TabButtonWidget(
       {required this.isSelected,
       required this.onTap,
       required this.image,
@@ -17,7 +17,7 @@ class TabButton extends StatefulWidget {
   _TabButtonState createState() => _TabButtonState();
 }
 
-class _TabButtonState extends State<TabButton> {
+class _TabButtonState extends State<TabButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(

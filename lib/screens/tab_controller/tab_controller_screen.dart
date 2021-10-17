@@ -74,35 +74,35 @@ class _TabControllerScreenState extends State<TabControllerScreenWidget> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    TabButton(
+                                    TabButtonWidget(
                                       isSelected: _index == 0,
                                       image: 'assets/ic_tab_wallet.png',
                                       selectedImage:
                                           'assets/ic_tab_wallet_selected.png',
                                       onTap: () => {didSelectTab(0)},
                                     ),
-                                    TabButton(
+                                    TabButtonWidget(
                                       isSelected: _index == 1,
                                       image: 'assets/ic_tab_swap.png',
                                       selectedImage:
                                           'assets/ic_tab_swap_selected.png',
                                       onTap: () => {didSelectTab(1)},
                                     ),
-                                    TabButton(
+                                    TabButtonWidget(
                                       isSelected: _index == 2,
                                       image: 'assets/ic_tab_borrow.png',
                                       selectedImage:
                                           'assets/ic_tab_borrow_selected.png',
                                       onTap: () => {didSelectTab(2)},
                                     ),
-                                    TabButton(
+                                    TabButtonWidget(
                                       isSelected: _index == 3,
                                       image: 'assets/ic_tab_yield.png',
                                       selectedImage:
                                           'assets/ic_tab_yield_selected.png',
                                       onTap: () => {didSelectTab(3)},
                                     ),
-                                    TabButton(
+                                    TabButtonWidget(
                                       isSelected: _index == 4,
                                       image: 'assets/ic_tab_farm.png',
                                       selectedImage:

@@ -32,6 +32,8 @@ dependencies:
   auto_size_text: any
   flutter_launcher_icons: any
   flutter_native_splash: any
+  cached_network_image: any
+  flutter_money_formatter: any
 
 dev_dependencies:
   flutter_test:
