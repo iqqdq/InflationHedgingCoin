@@ -1,5 +1,7 @@
 import 'dart:ui';
 // ignore: import_of_legacy_library_into_null_safe
+import 'package:auto_size_text/auto_size_text.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -56,7 +58,7 @@ class _WalletListItemState extends State<WalletListItemWidget> {
             Expanded(
                 child: Align(
                     alignment: Alignment.centerRight,
-                    child: Text(fmf.output.nonSymbol,
+                    child: AutoSizeText(fmf.output.nonSymbol,
                         style: textStyle,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis)))

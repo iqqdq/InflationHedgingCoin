@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/qzn_toast.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/screens/wallet/components/wallet_address.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_header.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_list_item.dart';
+import 'package:share/share.dart';
 
 class WalletScreenWidget extends StatefulWidget {
   const WalletScreenWidget({Key? key}) : super(key: key);
@@ -15,13 +17,23 @@ class WalletScreenWidget extends StatefulWidget {
 class _WalletScreenState extends State<WalletScreenWidget> {
   final _themeNotifier = ThemeNotifier();
   bool _showToast = false;
+  bool _showReceive = false;
 
   // MARK: -
   // MARK: - ACTIONS
 
-  void receiveDidTap() {}
+  void receiveDidTap() {
+    setState(() {
+      _showReceive = true;
+    });
+  }
 
   void sendDidTap() {}
+
+  void shareDidTap() {
+    Share.share(
+        'My wallet address:\n0x490dbf7884b8e13c2161448b83dd2d8909db48ed');
+  }
 
   void copyDidTap() {
     setState(() {
@@ -44,7 +56,7 @@ class _WalletScreenState extends State<WalletScreenWidget> {
                       left: 24.0, top: padding.top + 12.0, right: 24.0),
                   child: WalletHeaderWidget(
                       themeNotifier: _themeNotifier,
-                      totalValue: 1345175,
+                      totalValue: 13451752,
                       onReceiveTap: () => {receiveDidTap()},
                       onSendTap: () => {sendDidTap()},
                       onCopyTap: () => {copyDidTap()})),
@@ -64,6 +76,19 @@ class _WalletScreenState extends State<WalletScreenWidget> {
                       }))
             ],
           ),
+          _showReceive
+              ? WalletAddressWidget(
+                  themeNotifier: _themeNotifier,
+                  walletAddress: '0x490dbf7884b8e13c2161448b83dd2d8909db48ed',
+                  qrData: '0x490dbf7884b8e13c2161448b83dd2d8909db48ed',
+                  onShareTap: () => {shareDidTap()},
+                  onCopyTap: () => {copyDidTap()},
+                  onCloseTap: () => {
+                        setState(() {
+                          _showReceive = false;
+                        })
+                      })
+              : Container(),
           _showToast
               ? QZNToastWidget(
                   themeNotifier: _themeNotifier,

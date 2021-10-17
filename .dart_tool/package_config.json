@@ -176,6 +176,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "mime",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "octo_image",
       "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/octo_image-0.3.0",
       "packageUri": "lib/",
@@ -248,10 +254,28 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "qr",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/qr-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "qr_flutter",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/qr_flutter-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "rxdart",
       "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/rxdart-0.25.0",
       "packageUri": "lib/",
       "languageVersion": "2.6"
+    },
+    {
+      "name": "share",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/share-2.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "sky_engine",
@@ -368,7 +392,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-17T16:04:36.425471Z",
+  "generated": "2021-10-17T18:44:46.111718Z",
   "generator": "pub",
   "generatorVersion": "2.14.0-4.0.dev"
 }

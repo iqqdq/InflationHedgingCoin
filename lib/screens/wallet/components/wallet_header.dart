@@ -2,6 +2,8 @@ import 'dart:ui';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 import 'package:inflation_hedging_coin/components/circle_button.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
@@ -26,11 +28,11 @@ class WalletHeaderWidget extends StatefulWidget {
 class _WalletHeaderState extends State<WalletHeaderWidget> {
   @override
   Widget build(BuildContext context) {
-    final totalValue = widget.totalValue % 1 == 0
-        ? widget.totalValue.toInt()
-        : widget.totalValue;
     final separator = Container(
         width: 1.0, height: 62.0, color: widget.themeNotifier.outlineColor);
+    final fmf = FlutterMoneyFormatter(
+        amount:
+            widget.totalValue % 1 == 0 ? widget.totalValue : widget.totalValue);
 
     return Container(
         height: 216.0,
@@ -58,7 +60,8 @@ class _WalletHeaderState extends State<WalletHeaderWidget> {
               SizedBox(height: 11.0),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 18.0),
-                child: AutoSizeText(r'$' + totalValue.toString(),
+                child: AutoSizeText(r'$' + fmf.output.nonSymbol,
+                    maxLines: 1,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontFamily: 'NeoGramExtended',
@@ -71,21 +74,21 @@ class _WalletHeaderState extends State<WalletHeaderWidget> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleButtonWidget(
+                    QZNCircleButtonWidget(
                       themeNotifier: widget.themeNotifier,
                       title: 'Receive',
                       image: 'assets/ic_qr_code.png',
                       onTap: () => {widget.onReceiveTap()},
                     ),
                     separator,
-                    CircleButtonWidget(
+                    QZNCircleButtonWidget(
                       themeNotifier: widget.themeNotifier,
                       title: 'Send',
                       image: 'assets/ic_send.png',
                       onTap: () => {widget.onSendTap()},
                     ),
                     separator,
-                    CircleButtonWidget(
+                    QZNCircleButtonWidget(
                       themeNotifier: widget.themeNotifier,
                       title: 'Copy',
                       image: 'assets/ic_copy.png',

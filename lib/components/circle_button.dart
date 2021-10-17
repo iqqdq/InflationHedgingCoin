@@ -2,23 +2,23 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
-class CircleButtonWidget extends StatefulWidget {
+class QZNCircleButtonWidget extends StatefulWidget {
   final ThemeNotifier themeNotifier;
   final String title;
   final String image;
   final VoidCallback onTap;
 
-  CircleButtonWidget(
+  QZNCircleButtonWidget(
       {required this.title,
       required this.image,
       required this.onTap,
       required this.themeNotifier});
 
   @override
-  _CircleButtonState createState() => _CircleButtonState();
+  _QZNCircleButtonState createState() => _QZNCircleButtonState();
 }
 
-class _CircleButtonState extends State<CircleButtonWidget> {
+class _QZNCircleButtonState extends State<QZNCircleButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
