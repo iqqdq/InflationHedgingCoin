@@ -64,7 +64,7 @@ class _WalletAddressState extends State<WalletAddressWidget>
                         Text('Your address',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontFamily: 'NeoGram Extended',
+                                fontFamily: 'NeoGramExtended',
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w700,
                                 color: widget.themeNotifier.titleColor)),

@@ -49,7 +49,10 @@ class _WalletListItemState extends State<WalletListItemWidget> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16.0),
                 child: CachedNetworkImage(
-                    imageUrl: widget.image, fit: BoxFit.cover),
+                    imageUrl: widget.image,
+                    width: 40.0,
+                    height: 40.0,
+                    fit: BoxFit.cover),
               ),
               SizedBox(width: 10.0),
               Text(widget.name, style: textStyle),
