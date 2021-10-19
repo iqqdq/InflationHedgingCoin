@@ -6,6 +6,9 @@ import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/borrow/components/borrow_list_item.dart';
 import 'package:inflation_hedging_coin/screens/borrow/components/borrow_market_header.dart';
 import 'package:inflation_hedging_coin/screens/borrow/components/borrow_net_apy.dart';
+import 'package:inflation_hedging_coin/screens/borrow_modal_sheet/borrow_modal_sheet_screen.dart';
+import 'package:inflation_hedging_coin/screens/supply_modal_sheet/supply_modal_sheet_screen.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class BorrowScreenWidget extends StatefulWidget {
   const BorrowScreenWidget({Key? key}) : super(key: key);
@@ -21,27 +24,27 @@ class _BorrowScreenState extends State<BorrowScreenWidget> {
   // MARK: - ACTIONS
 
   void supplySwitchDidTap() {
-    // Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) => RecentTransactionsScreenWidget()));
+    showMaterialModalBottomSheet(
+        barrierColor: Colors.black.withOpacity(0.5),
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (context) => SupplyModalSheetWidget());
   }
 
   void borrowSwitchDidTap() {
-    // Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) => RecentTransactionsScreenWidget()));
+    showMaterialModalBottomSheet(
+        barrierColor: Colors.black.withOpacity(0.5),
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (context) => BorrowModalSheetWidget());
   }
 
   @override
   Widget build(BuildContext context) {
-    final padding = MediaQuery.of(context).padding;
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: QZNAppBarWidget(
-          preferredSize: Size.fromHeight(90.0),
+          preferredSize: Size.fromHeight(80.0),
           themeNotifier: _themeNotifier,
           title: 'Loan',
           subtitle: 'Borrow and save your tokens',
@@ -142,7 +145,7 @@ class _BorrowScreenState extends State<BorrowScreenWidget> {
                             balanceValue: 143455549,
                             switchState: false,
                             onSwitchTap: (isOn) {
-                              print(isOn);
+                              if (isOn) supplySwitchDidTap();
                             });
                       })),
               SizedBox(height: 32.0),
@@ -174,7 +177,7 @@ class _BorrowScreenState extends State<BorrowScreenWidget> {
                             balanceValue: 143455549,
                             switchState: false,
                             onSwitchTap: (isOn) {
-                              print(isOn);
+                              if (isOn) borrowSwitchDidTap();
                             });
                       })),
             ],

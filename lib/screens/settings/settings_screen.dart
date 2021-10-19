@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/gradient_text.dart';
 import 'package:inflation_hedging_coin/components/qzn_app_bar.dart';
-import 'package:inflation_hedging_coin/components/qzn_header_number_keyboard.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/settings/components/settings_input.dart';
@@ -47,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: QZNAppBarWidget(
-          preferredSize: Size.fromHeight(90.0),
+          preferredSize: Size.fromHeight(80.0),
           themeNotifier: _themeNotifier,
           title: 'Settings',
           withBackButton: true,
@@ -102,19 +101,6 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   focusNode: _deadlineFocusNode)
             ],
           ),
-          // DELETE
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: QZNHeaderNumberKeyboardWidget(
-                  themeNotifier: _themeNotifier,
-                  showKeyboard: true,
-                  isEnterButtonEnabled: false,
-                  enterButtonTitle: 'Enter amount',
-                  feeUSDValue: r'$25 > 3 min',
-                  feeValue: '0.00125 ETH',
-                  totalValue: '120,500 IHC',
-                  didTapKeyButton: (text) => {print(text)},
-                  onEnterTap: () => {}))
         ]))));
   }
 }

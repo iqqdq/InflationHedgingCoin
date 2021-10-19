@@ -1,5 +1,7 @@
 import 'dart:ui';
 // ignore: import_of_legacy_library_into_null_safe
+import 'package:auto_size_text_field/auto_size_text_field.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
@@ -66,7 +68,7 @@ class _SwapInputState extends State<SwapInputWidget> {
             children: [
               /// INPUT
               Expanded(
-                  child: TextFormField(
+                  child: AutoSizeTextField(
                       focusNode: widget.focusNode,
                       textAlign: TextAlign.left,
                       keyboardType: TextInputType.number,

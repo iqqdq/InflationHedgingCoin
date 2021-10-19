@@ -25,7 +25,7 @@ class _RecentTransactionsScreenState
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
         appBar: QZNAppBarWidget(
-          preferredSize: Size.fromHeight(90.0),
+          preferredSize: Size.fromHeight(80.0),
           themeNotifier: _themeNotifier,
           title: 'Recent\nTransactions',
           withBackButton: true,

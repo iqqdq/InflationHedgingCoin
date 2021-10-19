@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/qzn_gradient_button.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
-class QZNHeaderNumberKeyboardWidget extends StatefulWidget {
+class QZNHeaderNumericKeyboardWidget extends StatefulWidget {
   final ThemeNotifier themeNotifier;
   final bool showKeyboard;
   final bool isEnterButtonEnabled;
@@ -14,9 +14,10 @@ class QZNHeaderNumberKeyboardWidget extends StatefulWidget {
   final String feeValue;
   final String totalValue;
   final Function(String) didTapKeyButton;
+  final VoidCallback onRemoveTap;
   final VoidCallback onEnterTap;
 
-  QZNHeaderNumberKeyboardWidget({
+  QZNHeaderNumericKeyboardWidget({
     required this.themeNotifier,
     required this.showKeyboard,
     required this.isEnterButtonEnabled,
@@ -25,15 +26,17 @@ class QZNHeaderNumberKeyboardWidget extends StatefulWidget {
     required this.feeValue,
     required this.totalValue,
     required this.didTapKeyButton,
+    required this.onRemoveTap,
     required this.onEnterTap,
   });
 
   @override
-  _QZNHeaderNumberKeyboardState createState() =>
-      _QZNHeaderNumberKeyboardState();
+  _QZNHeaderNumericKeyboardState createState() =>
+      _QZNHeaderNumericKeyboardState();
 }
 
-class _QZNHeaderNumberKeyboardState extends State<QZNHeaderNumberKeyboardWidget>
+class _QZNHeaderNumericKeyboardState
+    extends State<QZNHeaderNumericKeyboardWidget>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -75,6 +78,22 @@ class _QZNHeaderNumberKeyboardState extends State<QZNHeaderNumberKeyboardWidget>
                         fontSize: 25.0,
                         color: widget.themeNotifier.titleColor)),
               ),
+            )));
+  }
+
+  Widget getRemoveButton(double width) {
+    return Container(
+        width: width,
+        decoration: BoxDecoration(
+            color: widget.themeNotifier.keyButtonColor,
+            borderRadius: BorderRadius.circular(16.0)),
+        child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              highlightColor: Colors.black38,
+              onTap: () => widget.onRemoveTap(),
+              borderRadius: BorderRadius.circular(16.0),
+              child: Center(child: Image.asset('assets/ic_arrow_back.png')),
             )));
   }
 
@@ -155,13 +174,14 @@ class _QZNHeaderNumberKeyboardState extends State<QZNHeaderNumberKeyboardWidget>
                   /// KEYBOARD
                   Expanded(
                       child: GridView.count(
+                    padding: EdgeInsets.zero,
                     crossAxisCount: 3,
                     crossAxisSpacing: 10.0,
                     mainAxisSpacing: 10.0,
                     childAspectRatio: 2.8,
                     children: List<Widget>.generate(11, (index) {
                       return index == 9
-                          ? Container()
+                          ? getRemoveButton(keyButtonWidth)
                           : getKeyButton(
                               index == 10 ? '0' : (index + 1).toString(),
                               keyButtonWidth);

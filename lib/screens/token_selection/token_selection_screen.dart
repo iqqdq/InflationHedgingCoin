@@ -30,7 +30,7 @@ class _TokenSelectionScreenState extends State<TokenSelectionScreenWidget> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: QZNAppBarWidget(
-          preferredSize: Size.fromHeight(90.0),
+          preferredSize: Size.fromHeight(80.0),
           themeNotifier: _themeNotifier,
           title: 'Select a token',
           withBackButton: true,

@@ -64,7 +64,7 @@ class _SwapScreenState extends State<SwapScreenWidget> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: QZNAppBarWidget(
-          preferredSize: Size.fromHeight(90.0),
+          preferredSize: Size.fromHeight(80.0),
           themeNotifier: _themeNotifier,
           title: 'Swap',
           subtitle: 'Trade tokens in an instant',

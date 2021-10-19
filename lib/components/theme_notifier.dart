@@ -14,6 +14,7 @@ class ThemeNotifier with ChangeNotifier {
   var placeholderColor = HexColor("4C5366");
   var inputColor = HexColor("1D212C");
   var keyButtonColor = HexColor("41485B");
+  var segmentedControlColor = HexColor("181920");
   var blueGradientColor = HexColor("20AAE5");
   var pinkGradientColor = HexColor("DB63AB");
   var lightGreenGradientColor = HexColor("63CDDB");
