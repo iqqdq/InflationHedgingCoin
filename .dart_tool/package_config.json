@@ -134,6 +134,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_spinkit",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-4.1.2+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.5"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/q/Development/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -392,7 +398,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-17T18:44:46.111718Z",
+  "generated": "2021-10-19T00:07:15.096514Z",
   "generator": "pub",
   "generatorVersion": "2.14.0-4.0.dev"
 }

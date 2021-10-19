@@ -1,4 +1,5 @@
 import 'dart:ui';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/gradient_text.dart';

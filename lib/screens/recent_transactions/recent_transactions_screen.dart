@@ -4,6 +4,7 @@ import 'package:inflation_hedging_coin/components/qzn_app_bar.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/recent_transactions/components/recent_transaction_item.dart';
+import 'package:inflation_hedging_coin/screens/recent_transactions/components/swap_details.dart';
 
 class RecentTransactionsScreenWidget extends StatefulWidget {
   const RecentTransactionsScreenWidget({Key? key}) : super(key: key);
@@ -16,10 +17,12 @@ class RecentTransactionsScreenWidget extends StatefulWidget {
 class _RecentTransactionsScreenState
     extends State<RecentTransactionsScreenWidget> {
   final _themeNotifier = ThemeNotifier();
+  bool _showSwapDetails = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
         appBar: QZNAppBarWidget(
           preferredSize: Size.fromHeight(90.0),
@@ -33,7 +36,7 @@ class _RecentTransactionsScreenState
                 child: Stack(children: [
           ListView.builder(
               padding: EdgeInsets.only(
-                  top: 20.0, left: 24.0, right: 24.0, bottom: 40.0),
+                  top: 140.0, left: 24.0, right: 24.0, bottom: 40.0),
               itemCount: 8,
               itemBuilder: (context, index) {
                 return RecentTransactionListItemWidget(
@@ -48,7 +51,29 @@ class _RecentTransactionsScreenState
                         'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
                     toValue: 200,
                     dateTime: DateTime.now());
-              })
+              }),
+          _showSwapDetails
+              ? SwapDetailsWidget(
+                  themeNotifier: _themeNotifier,
+                  fromImage:
+                      'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                  fromValue: 150000,
+                  fromName: 'IHC',
+                  toImage:
+                      'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                  toValue: 10500,
+                  toName: 'IHC',
+                  feeDollarValue: 25,
+                  feeETHValue: 0.00125,
+                  status: 0,
+                  dateTime: DateTime.now(),
+                  link: 'link',
+                  onCloseTap: () => {
+                        setState(() {
+                          _showSwapDetails = false;
+                        })
+                      })
+              : Container()
         ]))));
   }
 }

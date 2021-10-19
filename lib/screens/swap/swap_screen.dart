@@ -9,6 +9,7 @@ import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/recent_transactions/recent_transactions_screen.dart';
 import 'package:inflation_hedging_coin/screens/settings/settings_screen.dart';
 import 'package:inflation_hedging_coin/screens/swap/components/swap_input.dart';
+import 'package:inflation_hedging_coin/screens/token_selection/token_selection_screen.dart';
 
 class SwapScreenWidget extends StatefulWidget {
   const SwapScreenWidget({Key? key}) : super(key: key);
@@ -40,6 +41,11 @@ class _SwapScreenState extends State<SwapScreenWidget> {
   // MARK: - ACTIONS
 
   void confirmDidTap() {}
+
+  void selectTokenDidTap(int index) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => TokenSelectionScreenWidget()));
+  }
 
   void recentDidTap() {
     Navigator.push(
@@ -76,7 +82,7 @@ class _SwapScreenState extends State<SwapScreenWidget> {
                   textEditingController: _fromTextEditingController,
                   focusNode: _fromFocusNode,
                   title: 'From',
-                  onTokenTap: () => {}),
+                  onTokenTap: () => {selectTokenDidTap(0)}),
               Align(
                   alignment: Alignment.center,
                   child: PointerWidget(themeNotifier: _themeNotifier)),
@@ -90,7 +96,7 @@ class _SwapScreenState extends State<SwapScreenWidget> {
                   name: 'IHC',
                   image:
                       'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
-                  onTokenTap: () => {}),
+                  onTokenTap: () => {selectTokenDidTap(1)}),
               SizedBox(height: 20.0),
 
               /// SWAP BUTTON
