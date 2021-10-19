@@ -85,6 +85,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  custom_switch:
+    dependency: "direct main"
+    description:
+      name: custom_switch
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
+  dashed_circle:
+    dependency: "direct main"
+    description:
+      name: dashed_circle
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   dio:
     dependency: "direct main"
     description:

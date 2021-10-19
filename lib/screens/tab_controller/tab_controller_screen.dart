@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/tab_button.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/screens/borrow/borrow_screen.dart';
 import 'package:inflation_hedging_coin/screens/swap/swap_screen.dart';
 import 'package:inflation_hedging_coin/screens/wallet/wallet_screen.dart';
 
@@ -19,7 +20,11 @@ class _TabControllerScreenState extends State<TabControllerScreenWidget> {
 
   @override
   void initState() {
-    _listScreens = [WalletScreenWidget(), SwapScreenWidget()];
+    _listScreens = [
+      WalletScreenWidget(),
+      SwapScreenWidget(),
+      BorrowScreenWidget()
+    ];
 
     super.initState();
   }

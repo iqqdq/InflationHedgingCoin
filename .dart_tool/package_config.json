@@ -74,6 +74,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "custom_switch",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/custom_switch-0.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "dashed_circle",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dashed_circle-0.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "dio",
       "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dio-3.0.10",
       "packageUri": "lib/",
@@ -398,7 +410,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-19T00:07:15.096514Z",
+  "generated": "2021-10-19T17:50:59.836507Z",
   "generator": "pub",
   "generatorVersion": "2.14.0-4.0.dev"
 }
