@@ -18,7 +18,7 @@ class SwapDetailsWidget extends StatefulWidget {
   final String toImage;
   final double toValue;
   final String toName;
-  final double feeDollarValue;
+  final double feeUSDValue;
   final double feeETHValue;
   final int status;
   final DateTime dateTime;
@@ -33,7 +33,7 @@ class SwapDetailsWidget extends StatefulWidget {
       required this.toImage,
       required this.toValue,
       required this.toName,
-      required this.feeDollarValue,
+      required this.feeUSDValue,
       required this.feeETHValue,
       required this.status,
       required this.dateTime,
@@ -153,7 +153,7 @@ class _SwapDetailsState extends State<SwapDetailsWidget>
                                     SizedBox(width: 15.0),
                                     Text(
                                         r'Fee $' +
-                                            widget.feeDollarValue.toString(),
+                                            widget.feeUSDValue.toString(),
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
                                             fontSize: 14.0,

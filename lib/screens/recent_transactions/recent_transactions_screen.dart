@@ -63,7 +63,7 @@ class _RecentTransactionsScreenState
                       'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
                   toValue: 10500,
                   toName: 'IHC',
-                  feeDollarValue: 25,
+                  feeUSDValue: 25,
                   feeETHValue: 0.00125,
                   status: 0,
                   dateTime: DateTime.now(),
@@ -73,7 +73,7 @@ class _RecentTransactionsScreenState
                           _showSwapDetails = false;
                         })
                       })
-              : Container()
+              : Container(),
         ]))));
   }
 }

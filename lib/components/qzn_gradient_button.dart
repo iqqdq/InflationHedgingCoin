@@ -38,8 +38,6 @@ class _QZNGradientButtonState extends State<QZNGradientButton> {
                   : widget.themeNotifier.disabledButtonColor,
             ],
           ),
-          border:
-              Border.all(width: 1.0, color: widget.themeNotifier.outlineColor),
           borderRadius: BorderRadius.circular(24.0)),
       child: Material(
           color: Colors.transparent,

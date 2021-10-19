@@ -142,7 +142,7 @@ class _SwapScreenState extends State<SwapScreenWidget> {
                   image: 'assets/ic_recent.png',
                   onTap: () => {recentDidTap()})
             ],
-          )
+          ),
         ]))));
   }
 }
