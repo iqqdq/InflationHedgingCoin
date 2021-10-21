@@ -39,67 +39,63 @@ class _QZNAppBarState extends State<QZNAppBarWidget> {
         centerTitle: true,
         titleSpacing: 10.0,
         toolbarHeight: widget.preferredSize.height,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        title: Column(
           children: [
-            widget.withBackButton != null
-                ? Container(
-                    width: 40.0,
-                    height: 40.0,
-                    child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          highlightColor: Colors.black38,
-                          onTap: () => Navigator.pop(context),
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image.asset('assets/ic_arrow_back.png'),
-                        )))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                widget.withBackButton != null
+                    ? Container(
+                        width: 40.0,
+                        height: 40.0,
+                        child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              highlightColor: Colors.black38,
+                              onTap: () => Navigator.pop(context),
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image.asset('assets/ic_arrow_back.png'),
+                            )))
+                    : Container(),
+                AutoSizeText(widget.title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: 'NeoGramExtended',
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.w700,
+                        color: widget.themeNotifier.titleColor)),
+                widget.action != null
+                    ? Container(
+                        width: 50.0,
+                        height: 40.0,
+                        child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                                highlightColor: Colors.black38,
+                                onTap: () => widget.onActionTap!(),
+                                borderRadius: BorderRadius.circular(20.0),
+                                child: Center(child: widget.action))))
+                    : SizedBox(
+                        width: widget.withBackButton == null ? 0.0 : 40.0)
+              ],
+            ),
+            widget.subtitle != null ? SizedBox(height: 16.0) : Container(),
+            widget.subtitle != null
+                ? GradientText(
+                    widget.subtitle!,
+                    style: TextStyle(
+                        fontFamily: 'NeoGramExtended',
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700),
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          widget.themeNotifier.blueGradientColor,
+                          widget.themeNotifier.pinkGradientColor,
+                        ]),
+                  )
                 : Container(),
-            Padding(
-                padding:
-                    EdgeInsets.only(left: widget.action != null ? 10.0 : 0.0),
-                child: Column(
-                  children: [
-                    AutoSizeText(widget.title,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: 'NeoGramExtended',
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.w700,
-                            color: widget.themeNotifier.titleColor)),
-                    widget.subtitle != null
-                        ? SizedBox(height: 16.0)
-                        : Container(),
-                    widget.subtitle != null
-                        ? GradientText(
-                            widget.subtitle!,
-                            style: TextStyle(
-                                fontFamily: 'NeoGramExtended',
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w700),
-                            gradient: LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  widget.themeNotifier.blueGradientColor,
-                                  widget.themeNotifier.pinkGradientColor,
-                                ]),
-                          )
-                        : Container(),
-                  ],
-                )),
-            widget.action != null
-                ? Container(
-                    width: 50.0,
-                    height: 40.0,
-                    child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                            highlightColor: Colors.black38,
-                            onTap: () => widget.onActionTap!(),
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: Center(child: widget.action))))
-                : SizedBox(width: widget.withBackButton == null ? 0.0 : 40.0)
           ],
         ));
   }
