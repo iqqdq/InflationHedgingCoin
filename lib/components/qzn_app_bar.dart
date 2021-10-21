@@ -57,13 +57,18 @@ class _QZNAppBarState extends State<QZNAppBarWidget> {
                               child: Image.asset('assets/ic_arrow_back.png'),
                             )))
                     : Container(),
-                AutoSizeText(widget.title,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: 'NeoGramExtended',
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.w700,
-                        color: widget.themeNotifier.titleColor)),
+                Expanded(
+                    child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: AutoSizeText(widget.title,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'NeoGramExtended',
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w700,
+                          color: widget.themeNotifier.titleColor)),
+                )),
                 widget.action != null
                     ? Container(
                         width: 50.0,
@@ -81,19 +86,26 @@ class _QZNAppBarState extends State<QZNAppBarWidget> {
             ),
             widget.subtitle != null ? SizedBox(height: 16.0) : Container(),
             widget.subtitle != null
-                ? GradientText(
-                    widget.subtitle!,
-                    style: TextStyle(
-                        fontFamily: 'NeoGramExtended',
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w700),
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          widget.themeNotifier.blueGradientColor,
-                          widget.themeNotifier.pinkGradientColor,
-                        ]),
+                ? Row(
+                    children: [
+                      Expanded(
+                          child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.0),
+                              child: GradientText(
+                                widget.subtitle!,
+                                style: TextStyle(
+                                    fontFamily: 'NeoGramExtended',
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w700),
+                                gradient: LinearGradient(
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                    colors: [
+                                      widget.themeNotifier.blueGradientColor,
+                                      widget.themeNotifier.pinkGradientColor,
+                                    ]),
+                              )))
+                    ],
                   )
                 : Container(),
           ],

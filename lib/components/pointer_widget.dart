@@ -25,7 +25,7 @@ class PointerWidget extends StatelessWidget {
           border: Border.all(width: 1.0, color: themeNotifier.outlineColor),
           borderRadius: BorderRadius.circular(20.0)),
       child: Center(
-        child: Image.asset('assets/ic_arrow_down.png'),
+        child: Image.asset('assets/ic_gradient_arrow_down.png'),
       ),
     );
   }

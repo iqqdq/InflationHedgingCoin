@@ -17,7 +17,7 @@ class GradientText extends StatelessWidget {
       shaderCallback: (bounds) => gradient.createShader(
         Rect.fromLTWH(0, 0, bounds.width, bounds.height),
       ),
-      child: AutoSizeText(text,
+      child: Text(text,
           textAlign: textAlign == null ? TextAlign.center : textAlign,
           style: style),
     );

@@ -5,6 +5,7 @@ import 'package:inflation_hedging_coin/screens/borrow/borrow_screen.dart';
 import 'package:inflation_hedging_coin/screens/farm/farm_screen.dart';
 import 'package:inflation_hedging_coin/screens/swap/swap_screen.dart';
 import 'package:inflation_hedging_coin/screens/wallet/wallet_screen.dart';
+import 'package:inflation_hedging_coin/screens/yield/yield_screen.dart';
 
 class TabControllerScreenWidget extends StatefulWidget {
   const TabControllerScreenWidget({Key? key}) : super(key: key);
@@ -25,6 +26,7 @@ class _TabControllerScreenState extends State<TabControllerScreenWidget> {
       WalletScreenWidget(),
       SwapScreenWidget(),
       BorrowScreenWidget(),
+      YieldScreenWidget(),
       FarmScreenWidget()
     ];
 
