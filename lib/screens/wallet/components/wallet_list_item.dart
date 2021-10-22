@@ -29,7 +29,6 @@ class WalletListItemWidget extends StatefulWidget {
 class _WalletListItemState extends State<WalletListItemWidget> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final textStyle = TextStyle(
         fontFamily: 'NeoGramExtended',
         fontWeight: FontWeight.bold,
@@ -38,34 +37,38 @@ class _WalletListItemState extends State<WalletListItemWidget> {
     final fmf = FlutterMoneyFormatter(
         amount: widget.value % 1 == 0 ? widget.value : widget.value);
 
-    return Container(
-        height: 40.0,
-        width: size.width - 48.0,
-        margin: EdgeInsets.only(bottom: 30.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16.0),
-                child: CachedNetworkImage(
-                    imageUrl: widget.image,
-                    width: 40.0,
-                    height: 40.0,
-                    fit: BoxFit.cover),
-              ),
-              SizedBox(width: 10.0),
-              Text(widget.name, style: textStyle),
-            ]),
-            SizedBox(width: 10.0),
-            Expanded(
-                child: Align(
-                    alignment: Alignment.centerRight,
-                    child: AutoSizeText(fmf.output.nonSymbol,
-                        style: textStyle,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis)))
-          ],
-        ));
+    return Material(
+        color: Colors.transparent,
+        child: InkWell(
+            highlightColor: Colors.black38,
+            onTap: () => widget.onTap(),
+            child: Container(
+                padding: EdgeInsets.only(
+                    top: 12.0, bottom: 12.0, left: 24.0, right: 24.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(16.0),
+                        child: CachedNetworkImage(
+                            imageUrl: widget.image,
+                            width: 40.0,
+                            height: 40.0,
+                            fit: BoxFit.cover),
+                      ),
+                      SizedBox(width: 10.0),
+                      Text(widget.name, style: textStyle),
+                    ]),
+                    SizedBox(width: 10.0),
+                    Expanded(
+                        child: Align(
+                            alignment: Alignment.centerRight,
+                            child: AutoSizeText(fmf.output.nonSymbol,
+                                style: textStyle,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis)))
+                  ],
+                ))));
   }
 }

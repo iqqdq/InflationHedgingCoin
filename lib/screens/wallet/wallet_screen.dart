@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/qzn_toast.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/screens/token_transaction/token_transaction_screen.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_address.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_header.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_list_item.dart';
@@ -41,6 +42,13 @@ class _WalletScreenState extends State<WalletScreenWidget> {
     });
   }
 
+  void tokenDidTap(int index) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => TokenTransactionScreenWidget()));
+  }
+
   @override
   Widget build(BuildContext context) {
     final padding = MediaQuery.of(context).padding;
@@ -62,9 +70,8 @@ class _WalletScreenState extends State<WalletScreenWidget> {
                       onCopyTap: () => {copyDidTap()})),
               Expanded(
                   child: ListView.builder(
-                      padding: EdgeInsets.only(
-                          left: 24.0, top: 32.0, right: 24.0, bottom: 100.0),
-                      itemCount: 20,
+                      padding: EdgeInsets.only(top: 32.0, bottom: 100.0),
+                      itemCount: 10,
                       itemBuilder: (context, index) {
                         return WalletListItemWidget(
                             themeNotifier: _themeNotifier,
@@ -72,7 +79,7 @@ class _WalletScreenState extends State<WalletScreenWidget> {
                                 'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
                             name: 'GPYX',
                             value: 126753542,
-                            onTap: () => {});
+                            onTap: () => {tokenDidTap(index)});
                       }))
             ],
           ),
