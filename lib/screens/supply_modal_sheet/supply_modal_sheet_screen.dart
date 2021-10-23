@@ -3,8 +3,9 @@ import 'package:auto_size_text_field/auto_size_text_field.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/qzn_footer_numeric_keyboard.dart';
-import 'package:inflation_hedging_coin/components/qzn_segmented_control.dart';
+import 'package:inflation_hedging_coin/components/close_button_widget.dart';
+import 'package:inflation_hedging_coin/components/qzn_footer_numeric_keyboard_widget.dart';
+import 'package:inflation_hedging_coin/components/qzn_segmented_control_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/screens/supply_modal_sheet/components/max_button.dart';
 
@@ -118,59 +119,42 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
         children: [
           Padding(
               padding: EdgeInsets.only(
-                  left: 24.0, top: 16.0, right: 24.0, bottom: 24.0),
+                  left: 0.0, top: 16.0, right: 12.0, bottom: 24.0),
               child: Column(children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     /// CLOSE BUTTON
-                    Container(
-                        width: 50.0,
-                        height: 40.0,
-                        child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                                highlightColor: Colors.black38,
-                                onTap: () => {Navigator.pop(context)},
-                                borderRadius: BorderRadius.circular(20.0),
-                                child: Center(
-                                    child: Text(
-                                  'Close',
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16.0,
-                                      color: _themeNotifier.placeholderColor),
-                                ))))),
+                    CloseButtonWidget(themeNotifier: _themeNotifier),
 
                     /// TITLE
-                    Text('Supply',
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'NeoGramExtended',
-                            color: _themeNotifier.titleColor)),
+                    Expanded(
+                        child: Center(
+                            child: Text('Supply',
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'NeoGramExtended',
+                                    color: _themeNotifier.titleColor)))),
 
-                    Row(
-                      children: [
-                        SizedBox(width: 10.0),
-
-                        /// TOKEN IMAGE
-                        CachedNetworkImage(
+                    /// TOKEN IMAGE
+                    Padding(
+                        padding: EdgeInsets.only(right: 12.0),
+                        child: CachedNetworkImage(
                           imageUrl:
                               'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
                           width: 40.0,
                           height: 40.0,
                           fit: BoxFit.cover,
-                        )
-                      ],
-                    )
+                        ))
                   ],
                 ),
 
                 /// BODY
                 Expanded(
                   child: ListView(
-                    padding: EdgeInsets.only(top: 20.0, bottom: 362.0),
+                    padding: EdgeInsets.only(
+                        top: 20.0, left: 24.0, right: 24.0, bottom: 362.0),
                     children: [
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -239,7 +223,7 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
                       SizedBox(height: 30.0),
 
                       /// SEGMENTED CONTROL
-                      QZNSegmentedControl(
+                      QZNSegmentedControlWidget(
                           themeNotifier: _themeNotifier,
                           width: size.width,
                           titles: ['Supply', 'Withdraw'],

@@ -4,7 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
-import 'package:inflation_hedging_coin/components/circle_button.dart';
+import 'package:inflation_hedging_coin/components/circle_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
 class WalletHeaderWidget extends StatefulWidget {

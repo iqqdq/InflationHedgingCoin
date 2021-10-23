@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:dashed_circle/dashed_circle.dart';
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
 class BorrowNetApyWidget extends StatelessWidget {
@@ -32,7 +32,7 @@ class BorrowNetApyWidget extends StatelessWidget {
                     fontSize: 12.0,
                     color: themeNotifier.titleColor)),
             SizedBox(height: 3.0),
-            GradientText(
+            GradientTextWidget(
               '$value%',
               style: TextStyle(
                   fontFamily: 'NeoGramExtended',

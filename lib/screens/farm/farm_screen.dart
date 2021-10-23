@@ -1,6 +1,6 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/qzn_app_bar.dart';
+import 'package:inflation_hedging_coin/components/qzn_app_bar_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/farm/components/farm_list_item.dart';

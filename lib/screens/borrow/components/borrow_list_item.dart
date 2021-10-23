@@ -4,8 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
-import 'package:inflation_hedging_coin/components/custom_switch.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
+import 'package:inflation_hedging_coin/components/custom_switch_widget.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
 class BorrowListItemWidget extends StatefulWidget {
@@ -85,7 +85,7 @@ class _BorrowListItemState extends State<BorrowListItemWidget> {
                         color: widget.themeNotifier.placeholderColor)),
 
                 /// SWITCH
-                CustomSwitch(
+                CustomSwitchWidget(
                     themeNotifier: widget.themeNotifier,
                     value: widget.switchState,
                     onChanged: (state) => widget.onSwitchTap(state))
@@ -97,7 +97,7 @@ class _BorrowListItemState extends State<BorrowListItemWidget> {
             Expanded(
                 child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: GradientText(
+                    child: GradientTextWidget(
                       'Balance ${fmfBalance.output.nonSymbol} ${widget.name}',
                       style: TextStyle(fontFamily: 'Poppins', fontSize: 14.0),
                       gradient: LinearGradient(

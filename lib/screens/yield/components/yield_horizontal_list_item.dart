@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
 class YieldHorizontalListItemWidget extends StatefulWidget {
@@ -60,7 +60,7 @@ class _YieldHorizontalListItemState
               SizedBox(height: 10.0),
 
               /// USD VALUE
-              GradientText(
+              GradientTextWidget(
                 widget.isPercent
                     ? '${widget.value}%'
                     : fmfUSD.output.compactSymbolOnLeft,

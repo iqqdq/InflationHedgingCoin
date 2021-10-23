@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/qzn_button.dart';
+import 'package:inflation_hedging_coin/components/qzn_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -68,6 +68,8 @@ class _WalletAddressState extends State<WalletAddressWidget>
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w700,
                                 color: widget.themeNotifier.titleColor)),
+
+                        /// CLOSE BUTTON
                         Padding(
                             padding: EdgeInsets.only(bottom: 4.0),
                             child: InkWell(

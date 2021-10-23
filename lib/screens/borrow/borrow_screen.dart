@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
-import 'package:inflation_hedging_coin/components/qzn_app_bar.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
+import 'package:inflation_hedging_coin/components/qzn_app_bar_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/borrow/components/borrow_list_item.dart';
@@ -69,7 +69,7 @@ class _BorrowScreenState extends State<BorrowScreenWidget> {
                     SizedBox(height: 8.0),
 
                     /// SUPPLY BALANCE
-                    GradientText(
+                    GradientTextWidget(
                       r'$120',
                       style: TextStyle(
                           fontFamily: 'NeoGramExtended',
@@ -92,7 +92,7 @@ class _BorrowScreenState extends State<BorrowScreenWidget> {
                     SizedBox(height: 8.0),
 
                     /// BORROW BALANCE
-                    GradientText(
+                    GradientTextWidget(
                       r'$0',
                       style: TextStyle(
                           fontFamily: 'NeoGramExtended',

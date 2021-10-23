@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
-class QZNSegmentedControl extends StatefulWidget {
+class QZNSegmentedControlWidget extends StatefulWidget {
   final ThemeNotifier themeNotifier;
   final double width;
   final List<String> titles;
   final void Function(int) onTap;
 
-  const QZNSegmentedControl({
+  const QZNSegmentedControlWidget({
     Key? key,
     required this.themeNotifier,
     required this.width,
@@ -16,10 +16,11 @@ class QZNSegmentedControl extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _QZNSegmentedControlState createState() => _QZNSegmentedControlState();
+  _QZNSegmentedControlWidgetState createState() =>
+      _QZNSegmentedControlWidgetState();
 }
 
-class _QZNSegmentedControlState extends State<QZNSegmentedControl>
+class _QZNSegmentedControlWidgetState extends State<QZNSegmentedControlWidget>
     with TickerProviderStateMixin {
   int _selectedIndex = 0;
 

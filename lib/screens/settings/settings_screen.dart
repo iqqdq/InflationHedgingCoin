@@ -1,7 +1,7 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
-import 'package:inflation_hedging_coin/components/qzn_app_bar.dart';
+import 'package:inflation_hedging_coin/components/app_bar_action_widget.dart';
+import 'package:inflation_hedging_coin/components/qzn_app_bar_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/settings/components/settings_input.dart';
@@ -46,26 +46,17 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: QZNAppBarWidget(
-          preferredSize: Size.fromHeight(80.0),
-          themeNotifier: _themeNotifier,
-          title: 'Settings',
-          withBackButton: true,
-          action: GradientText(
-            'Save',
-            style: TextStyle(
-                fontFamily: 'NeoGramExtended',
-                fontSize: 16.0,
-                fontWeight: FontWeight.w700),
-            gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [
-                  _themeNotifier.blueGradientColor,
-                  _themeNotifier.pinkGradientColor,
-                ]),
-          ),
-          onActionTap: () => {saveDidTap()},
-        ),
+            preferredSize: Size.fromHeight(80.0),
+            themeNotifier: _themeNotifier,
+            title: 'Settings',
+            withBackButton: true,
+            action: Container(
+              margin: EdgeInsets.only(right: 12.0),
+              child: AppBarActionWidget(
+                  themeNotifier: _themeNotifier,
+                  title: 'Save',
+                  onTap: () => {saveDidTap()}),
+            )),
         backgroundColor: _themeNotifier.backgroundColor,
         body: UnfocusWidget(
             child: SizedBox.expand(

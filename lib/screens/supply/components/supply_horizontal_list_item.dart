@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
 class SupplyHorizontalListItemWidget extends StatefulWidget {
@@ -60,7 +60,7 @@ class _SupplyHorizontalListItemState
               SizedBox(height: 10.0),
 
               /// VALUE
-              GradientText(
+              GradientTextWidget(
                 widget.index == 0
                     ? '${fmfUSD.output.compactNonSymbol} USDT'
                     : widget.index == 1

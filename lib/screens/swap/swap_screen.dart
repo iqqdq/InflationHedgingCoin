@@ -1,8 +1,8 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/qzn_app_bar.dart';
-import 'package:inflation_hedging_coin/components/qzn_gradient_button.dart';
-import 'package:inflation_hedging_coin/components/row_image_button.dart';
+import 'package:inflation_hedging_coin/components/qzn_app_bar_widget.dart';
+import 'package:inflation_hedging_coin/components/qzn_gradient_button_widget.dart';
+import 'package:inflation_hedging_coin/components/row_image_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/components/pointer_widget.dart';
 import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
@@ -100,7 +100,7 @@ class _SwapScreenState extends State<SwapScreenWidget> {
               SizedBox(height: 20.0),
 
               /// SWAP BUTTON
-              QZNGradientButton(
+              QZNGradientButtonWidget(
                   themeNotifier: _themeNotifier,
                   title: 'Enter amount',
                   isEnable: false,

@@ -2,39 +2,41 @@ import 'dart:ui';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/qzn_gradient_button.dart';
+import 'package:inflation_hedging_coin/components/qzn_gradient_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
-class QZNFooterNumericKeyboardWidget extends StatefulWidget {
+class QZNHeaderNumericKeyboardWidget extends StatefulWidget {
   final ThemeNotifier themeNotifier;
   final bool showKeyboard;
   final bool isEnterButtonEnabled;
   final String enterButtonTitle;
-  final String footerTitle;
-  final String footerValue;
+  final String feeUSDValue;
+  final String feeValue;
+  final String totalValue;
   final Function(String) didTapKeyButton;
   final VoidCallback onRemoveTap;
   final VoidCallback onEnterTap;
 
-  QZNFooterNumericKeyboardWidget({
+  QZNHeaderNumericKeyboardWidget({
     required this.themeNotifier,
     required this.showKeyboard,
     required this.isEnterButtonEnabled,
     required this.enterButtonTitle,
-    required this.footerTitle,
-    required this.footerValue,
+    required this.feeUSDValue,
+    required this.feeValue,
+    required this.totalValue,
     required this.didTapKeyButton,
     required this.onRemoveTap,
     required this.onEnterTap,
   });
 
   @override
-  _QZNFooterNumericKeyboardState createState() =>
-      _QZNFooterNumericKeyboardState();
+  _QZNHeaderNumericKeyboardState createState() =>
+      _QZNHeaderNumericKeyboardState();
 }
 
-class _QZNFooterNumericKeyboardState
-    extends State<QZNFooterNumericKeyboardWidget>
+class _QZNHeaderNumericKeyboardState
+    extends State<QZNHeaderNumericKeyboardWidget>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -109,12 +111,66 @@ class _QZNFooterNumericKeyboardState
         animation: _animation,
         builder: (BuildContext context, _) {
           return Container(
-              height: 362.0 * _animation.value,
+              height: 384.0 * _animation.value,
               padding: EdgeInsets.only(
-                  left: 24.0, top: 20.0, right: 24.0, bottom: 40.0),
+                  left: 24.0, top: 10.0, right: 24.0, bottom: 40.0),
               color: widget.themeNotifier.tableColor,
               child: Column(
                 children: [
+                  /// HEADER
+                  Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Fee',
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 14.0,
+                                      color: widget
+                                          .themeNotifier.placeholderColor)),
+                              Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                  padding: EdgeInsets.only(
+                                      left: 10.0,
+                                      top: 4.0,
+                                      bottom: 4.0,
+                                      right: 10.0),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 0.5,
+                                          color: widget
+                                              .themeNotifier.placeholderColor),
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  child: Text(widget.feeUSDValue,
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 14.0,
+                                          color: widget.themeNotifier
+                                              .placeholderColor))),
+                              Text(widget.feeValue,
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 14.0,
+                                      color: widget
+                                          .themeNotifier.placeholderColor))
+                            ],
+                          ),
+                          SizedBox(height: 10.0),
+                          Text('Total: ${widget.totalValue}',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14.0,
+                                  color: widget.themeNotifier.placeholderColor))
+                        ],
+                      )),
+                  SizedBox(height: 10.0),
+
                   /// KEYBOARD
                   Expanded(
                       child: GridView.count(
@@ -134,36 +190,11 @@ class _QZNFooterNumericKeyboardState
                   SizedBox(height: 10.0),
 
                   /// ENTER BUTTON
-                  QZNGradientButton(
+                  QZNGradientButtonWidget(
                       themeNotifier: widget.themeNotifier,
                       title: widget.enterButtonTitle,
                       isEnable: widget.isEnterButtonEnabled,
                       onTap: () => {widget.onEnterTap()}),
-                  SizedBox(height: 16.0),
-
-                  /// FOOTER
-                  Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                              padding: EdgeInsets.only(right: 10.0),
-                              child: Text(widget.footerTitle,
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14.0,
-                                      color: widget
-                                          .themeNotifier.placeholderColor))),
-                          Expanded(
-                              child: Text(widget.footerValue,
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14.0,
-                                      color: widget.themeNotifier.titleColor)))
-                        ],
-                      ))
                 ],
               ));
         });

@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
@@ -47,7 +47,7 @@ class _YieldSortItemState extends State<YieldSortItemWidget> {
                   child: widget.selectedIndex == 0
                       ? InkWell(
                           onTap: () => {widget.onTap(0)},
-                          child: GradientText(
+                          child: GradientTextWidget(
                             'Market',
                             style: TextStyle(
                                 fontFamily: 'Poppins', fontSize: 18.0),
@@ -78,7 +78,7 @@ class _YieldSortItemState extends State<YieldSortItemWidget> {
                   child: widget.selectedIndex == 1
                       ? InkWell(
                           onTap: () => {widget.onTap(1)},
-                          child: GradientText(
+                          child: GradientTextWidget(
                             'M.Size',
                             style: TextStyle(
                                 fontFamily: 'Poppins', fontSize: 18.0),
@@ -109,7 +109,7 @@ class _YieldSortItemState extends State<YieldSortItemWidget> {
                   child: widget.selectedIndex == 2
                       ? InkWell(
                           onTap: () => {widget.onTap(2)},
-                          child: GradientText(
+                          child: GradientTextWidget(
                             'APY',
                             style: TextStyle(
                                 fontFamily: 'Poppins', fontSize: 18.0),

@@ -2,7 +2,7 @@ import 'dart:ui';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:intl/intl.dart';
@@ -108,7 +108,7 @@ class _RecentTransactionListItemState
               SizedBox(height: 6.0),
               Padding(
                   padding: EdgeInsets.only(left: 20.0, right: 16.0),
-                  child: GradientText(
+                  child: GradientTextWidget(
                     widget.fromValue.toString(),
                     style: style,
                     gradient: LinearGradient(
@@ -151,7 +151,7 @@ class _RecentTransactionListItemState
               SizedBox(height: 6.0),
               Padding(
                   padding: EdgeInsets.only(left: 20.0, right: 16.0),
-                  child: GradientText(
+                  child: GradientTextWidget(
                     widget.toValue.toString(),
                     style: style,
                     gradient: LinearGradient(

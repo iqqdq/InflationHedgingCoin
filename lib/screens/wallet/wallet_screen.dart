@@ -1,11 +1,13 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/qzn_toast.dart';
+import 'package:inflation_hedging_coin/components/qzn_toast_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/screens/send_modal_sheet/send_modal_sheet_screen.dart';
 import 'package:inflation_hedging_coin/screens/token_transaction/token_transaction_screen.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_address.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_header.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_list_item.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:share/share.dart';
 
 class WalletScreenWidget extends StatefulWidget {
@@ -29,7 +31,13 @@ class _WalletScreenState extends State<WalletScreenWidget> {
     });
   }
 
-  void sendDidTap() {}
+  void sendDidTap() {
+    showMaterialModalBottomSheet(
+        barrierColor: Colors.black.withOpacity(0.5),
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (context) => SendModalSheetWidget());
+  }
 
   void shareDidTap() {
     Share.share(

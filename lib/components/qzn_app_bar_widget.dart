@@ -2,7 +2,7 @@ import 'dart:ui';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
 class QZNAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
@@ -60,18 +60,18 @@ class _QZNAppBarState extends State<QZNAppBarWidget> {
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: AutoSizeText(widget.title,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontFamily: 'NeoGramExtended',
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.w700,
-                          color: widget.themeNotifier.titleColor)),
+                  child: Center(
+                      child: AutoSizeText(widget.title,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'NeoGramExtended',
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w700,
+                              color: widget.themeNotifier.titleColor))),
                 )),
                 widget.action != null
                     ? Container(
-                        width: 50.0,
                         height: 40.0,
                         child: Material(
                             color: Colors.transparent,
@@ -91,7 +91,7 @@ class _QZNAppBarState extends State<QZNAppBarWidget> {
                       Expanded(
                           child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 16.0),
-                              child: GradientText(
+                              child: GradientTextWidget(
                                 widget.subtitle!,
                                 style: TextStyle(
                                     fontFamily: 'NeoGramExtended',

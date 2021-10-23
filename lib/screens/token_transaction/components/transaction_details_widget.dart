@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:inflation_hedging_coin/components/qzn_button.dart';
+import 'package:inflation_hedging_coin/components/qzn_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:intl/intl.dart';
@@ -114,6 +114,8 @@ class _TransactionDetailsState extends State<TransactionDetailsWidget>
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.w700,
                                     color: widget.themeNotifier.titleColor))),
+
+                        /// CLOSE BUTTON
                         Padding(
                             padding: EdgeInsets.only(left: 10.0, bottom: 10.0),
                             child: InkWell(

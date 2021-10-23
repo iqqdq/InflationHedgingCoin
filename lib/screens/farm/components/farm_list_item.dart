@@ -2,8 +2,8 @@ import 'dart:ui';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
-import 'package:inflation_hedging_coin/components/qzn_gradient_button.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
+import 'package:inflation_hedging_coin/components/qzn_gradient_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
 class FarmListItemWidget extends StatefulWidget {
@@ -88,7 +88,7 @@ class _FarmListItemState extends State<FarmListItemWidget> {
             SizedBox(height: 14.0),
 
             /// TOKEN NAME
-            GradientText(
+            GradientTextWidget(
               widget.title,
               style: TextStyle(
                   fontFamily: 'NeoGramExtended',
@@ -109,7 +109,7 @@ class _FarmListItemState extends State<FarmListItemWidget> {
             separator,
             getInfoRow('APY', '${widget.apyPercent}%'),
             SizedBox(height: 3.0),
-            QZNGradientButton(
+            QZNGradientButtonWidget(
                 themeNotifier: widget.themeNotifier,
                 title: 'Select',
                 isEnable: true,

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:inflation_hedging_coin/components/gradient_text.dart';
+import 'package:inflation_hedging_coin/components/gradient_text_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:intl/intl.dart';
@@ -114,7 +114,7 @@ class _TokenTransactionListItemState
                                               fontSize: 16.0,
                                               color: widget.themeNotifier
                                                   .placeholderColor))
-                                      : GradientText(
+                                      : GradientTextWidget(
                                           widget.status == 1
                                               ? 'Received'
                                               : 'Sent',

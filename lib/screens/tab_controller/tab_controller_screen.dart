@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inflation_hedging_coin/components/tab_button.dart';
+import 'package:inflation_hedging_coin/components/tab_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/screens/borrow/borrow_screen.dart';
 import 'package:inflation_hedging_coin/screens/farm/farm_screen.dart';

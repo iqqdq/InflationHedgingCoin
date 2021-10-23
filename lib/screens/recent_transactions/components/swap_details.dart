@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
-import 'package:inflation_hedging_coin/components/qzn_button.dart';
+import 'package:inflation_hedging_coin/components/qzn_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/screens/recent_transactions/components/swap_status_indicator.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -108,6 +108,8 @@ class _SwapDetailsState extends State<SwapDetailsWidget>
                                                   fontWeight: FontWeight.w700,
                                                   color: widget.themeNotifier
                                                       .titleColor)))),
+
+                                  /// CLOSE BUTTON
                                   Padding(
                                       padding: EdgeInsets.only(bottom: 4.0),
                                       child: InkWell(

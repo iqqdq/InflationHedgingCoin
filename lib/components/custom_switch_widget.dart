@@ -3,7 +3,7 @@ library custom_switch;
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
-class CustomSwitch extends StatefulWidget {
+class CustomSwitchWidget extends StatefulWidget {
   final ThemeNotifier themeNotifier;
   final bool value;
   final ValueChanged<bool> onChanged;
@@ -14,7 +14,7 @@ class CustomSwitch extends StatefulWidget {
   final Color activeTextColor;
   final Color inactiveTextColor;
 
-  const CustomSwitch(
+  const CustomSwitchWidget(
       {Key? key,
       required this.themeNotifier,
       required this.value,
@@ -31,7 +31,7 @@ class CustomSwitch extends StatefulWidget {
   _CustomSwitchState createState() => _CustomSwitchState();
 }
 
-class _CustomSwitchState extends State<CustomSwitch>
+class _CustomSwitchState extends State<CustomSwitchWidget>
     with SingleTickerProviderStateMixin {
   late Animation _circleAnimation;
   late AnimationController _animationController;
