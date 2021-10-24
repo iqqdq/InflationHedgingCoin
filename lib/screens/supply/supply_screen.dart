@@ -51,7 +51,8 @@ class _SupplyScreenState extends State<SupplyScreenWidget> {
         backgroundColor: _themeNotifier.backgroundColor,
         body: SizedBox.expand(
             child: Stack(children: [
-          Column(
+          SingleChildScrollView(
+              child: Column(
             children: [
               /// HORIZONTAL LIST
               Container(
@@ -102,8 +103,9 @@ class _SupplyScreenState extends State<SupplyScreenWidget> {
                   apyValue: 0.02138,
                   rateValue: 6.16,
                   feeValue: 0.05),
+              SizedBox(height: 40.0)
             ],
-          ),
+          )),
         ])));
   }
 }

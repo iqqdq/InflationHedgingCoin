@@ -2,6 +2,7 @@ import 'dart:ui';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:inflation_hedging_coin/components/device_height_detector.dart';
 import 'package:inflation_hedging_coin/components/qzn_gradient_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
@@ -113,7 +114,13 @@ class _QZNHeaderNumericKeyboardState
           return Container(
               height: 384.0 * _animation.value,
               padding: EdgeInsets.only(
-                  left: 24.0, top: 10.0, right: 24.0, bottom: 40.0),
+                  left: 24.0,
+                  top: 10.0,
+                  right: 24.0,
+                  bottom:
+                      DeviceHeightDetector().getType() == DeviceHeight.MEDIUM
+                          ? 20.0
+                          : 40.0),
               color: widget.themeNotifier.tableColor,
               child: Column(
                 children: [

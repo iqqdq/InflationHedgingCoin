@@ -58,7 +58,7 @@ class _YieldScreenState extends State<YieldScreenWidget> {
                   height: 82.0,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.only(left: 24.0, right: 24.0),
+                      padding: EdgeInsets.only(left: 24.0, right: 12.0),
                       itemCount: _horizontalItems.length,
                       itemBuilder: (context, index) {
                         return YieldHorizontalListItemWidget(

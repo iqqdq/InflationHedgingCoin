@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inflation_hedging_coin/components/device_height_detector.dart';
 import 'package:inflation_hedging_coin/components/tab_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/screens/borrow/borrow_screen.dart';
@@ -80,7 +81,11 @@ class _TabControllerScreenState extends State<TabControllerScreenWidget> {
                             child: Container(
                                 padding: EdgeInsets.only(top: 12.0),
                                 constraints: BoxConstraints(
-                                    maxHeight: 87.0 - _padding.bottom),
+                                    maxHeight:
+                                        DeviceHeightDetector().getType() ==
+                                                DeviceHeight.MEDIUM
+                                            ? 60.0
+                                            : 87.0 - _padding.bottom),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
