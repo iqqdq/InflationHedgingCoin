@@ -86,6 +86,12 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "dart_notification_center",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dart_notification_center-1.0.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "dashed_circle",
       "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dashed_circle-0.0.2",
       "packageUri": "lib/",
@@ -96,6 +102,12 @@
       "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dio-3.0.10",
       "packageUri": "lib/",
       "languageVersion": "2.4"
+    },
+    {
+      "name": "dotted_border",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dotted_border-2.0.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "fake_async",
@@ -156,6 +168,12 @@
       "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-4.1.2+1",
       "packageUri": "lib/",
       "languageVersion": "2.5"
+    },
+    {
+      "name": "flutter_tags",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_tags-0.4.9+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "flutter_test",
@@ -220,6 +238,18 @@
     {
       "name": "path",
       "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_drawing",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_drawing-0.5.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_parsing",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_parsing-0.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -422,7 +452,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-22T23:03:55.935577Z",
+  "generated": "2021-10-25T00:03:34.227583Z",
   "generator": "pub",
   "generatorVersion": "2.14.0-4.0.dev"
 }

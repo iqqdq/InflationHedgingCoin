@@ -2,6 +2,7 @@ import 'dart:ui';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:inflation_hedging_coin/components/device_height_detector.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 
 class QZNGradientButtonWidget extends StatefulWidget {
@@ -25,7 +26,10 @@ class _QZNGradientButtonWidgetState extends State<QZNGradientButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(minHeight: 60.0),
+      constraints: BoxConstraints(
+          minHeight: DeviceHeightDetector().getType() == DeviceHeight.MEDIUM
+              ? 50.0
+              : 60.0),
       decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.centerLeft,

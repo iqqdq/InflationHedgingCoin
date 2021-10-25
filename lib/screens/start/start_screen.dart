@@ -1,7 +1,9 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter/material.dart';
+import 'package:inflation_hedging_coin/components/device_height_detector.dart';
 import 'package:inflation_hedging_coin/components/qzn_gradient_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/screens/back_up/back_up_screen.dart';
 import 'package:inflation_hedging_coin/screens/start/components/create_wallet_button_widget.dart';
 
 class StartScreenWidget extends StatefulWidget {
@@ -19,7 +21,10 @@ class _StartScreenState extends State<StartScreenWidget> {
 
   void connectWalletDidTap() {}
 
-  void createWalletDidTap() {}
+  void createWalletDidTap() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => BackUpScreenWidget()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +48,10 @@ class _StartScreenState extends State<StartScreenWidget> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontFamily: 'NeoGramExtended',
-                            fontSize: 48.0,
+                            fontSize: DeviceHeightDetector().getType() ==
+                                    DeviceHeight.MEDIUM
+                                ? 36.0
+                                : 48.0,
                             fontWeight: FontWeight.bold,
                             color: _themeNotifier.titleColor)),
                   ],

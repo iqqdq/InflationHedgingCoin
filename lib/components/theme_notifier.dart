@@ -4,7 +4,7 @@ import 'hex_color.dart';
 class ThemeNotifier with ChangeNotifier {
   var backgroundColor = HexColor("0D0E12");
   var outlineColor = Colors.white10;
-  var shadowColor = Colors.black26;
+  var shadowColor = Colors.black.withOpacity(0.25);
   var tableColor = HexColor("12141A");
   var buttonColor = HexColor("2A2F3B");
   var titleColor = Colors.white;
@@ -23,4 +23,8 @@ class ThemeNotifier with ChangeNotifier {
   var greenGradientColor = HexColor("1AB056");
   var lightOrangeGradientColor = HexColor("E4BD58");
   var orangeGradientColor = HexColor("DB6363");
+  var recoveryWordColor = HexColor("777E91");
+  var warningColor = HexColor("E35353");
+  var warningBackgroundColor = HexColor("32191B");
+  var recoveryPhraseBackground = HexColor("121419");
 }

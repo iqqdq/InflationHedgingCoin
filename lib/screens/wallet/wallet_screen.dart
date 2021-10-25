@@ -4,8 +4,8 @@ import 'package:inflation_hedging_coin/components/qzn_toast_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/screens/send_modal_sheet/send_modal_sheet_screen.dart';
 import 'package:inflation_hedging_coin/screens/token_transaction/token_transaction_screen.dart';
-import 'package:inflation_hedging_coin/screens/wallet/components/wallet_address.dart';
-import 'package:inflation_hedging_coin/screens/wallet/components/wallet_header.dart';
+import 'package:inflation_hedging_coin/screens/wallet/components/wallet_address_widget.dart';
+import 'package:inflation_hedging_coin/screens/wallet/components/wallet_header_widget.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_list_item.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:share/share.dart';
@@ -21,6 +21,11 @@ class _WalletScreenState extends State<WalletScreenWidget> {
   final _themeNotifier = ThemeNotifier();
   bool _showToast = false;
   bool _showReceive = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   // MARK: -
   // MARK: - ACTIONS

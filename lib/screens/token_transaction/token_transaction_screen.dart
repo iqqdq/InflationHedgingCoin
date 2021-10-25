@@ -6,7 +6,7 @@ import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/screens/token_transaction/components/token_transaction_header.dart';
 import 'package:inflation_hedging_coin/screens/token_transaction/components/token_transaction_list_item.dart';
 import 'package:inflation_hedging_coin/screens/token_transaction/components/transaction_details_widget.dart';
-import 'package:inflation_hedging_coin/screens/wallet/components/wallet_address.dart';
+import 'package:inflation_hedging_coin/screens/wallet/components/wallet_address_widget.dart';
 import 'package:share/share.dart';
 
 class TokenTransactionScreenWidget extends StatefulWidget {

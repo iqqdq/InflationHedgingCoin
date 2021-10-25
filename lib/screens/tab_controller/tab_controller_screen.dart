@@ -5,11 +5,15 @@ import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/screens/borrow/borrow_screen.dart';
 import 'package:inflation_hedging_coin/screens/farm/farm_screen.dart';
 import 'package:inflation_hedging_coin/screens/swap/swap_screen.dart';
+import 'package:inflation_hedging_coin/screens/wallet/components/verify_succes_widget.dart';
 import 'package:inflation_hedging_coin/screens/wallet/wallet_screen.dart';
 import 'package:inflation_hedging_coin/screens/yield/yield_screen.dart';
 
 class TabControllerScreenWidget extends StatefulWidget {
-  const TabControllerScreenWidget({Key? key}) : super(key: key);
+  final bool? showWalletWasCreatedAlert;
+
+  const TabControllerScreenWidget({Key? key, this.showWalletWasCreatedAlert})
+      : super(key: key);
 
   @override
   _TabControllerScreenState createState() => _TabControllerScreenState();
@@ -20,6 +24,7 @@ class _TabControllerScreenState extends State<TabControllerScreenWidget> {
   final _themeNotifier = ThemeNotifier();
   late List<Widget> _listScreens;
   int _index = 0;
+  bool _isRecoveryPhraseCorrect = false;
 
   @override
   void initState() {
@@ -30,6 +35,9 @@ class _TabControllerScreenState extends State<TabControllerScreenWidget> {
       YieldScreenWidget(),
       FarmScreenWidget()
     ];
+
+    _isRecoveryPhraseCorrect =
+        widget.showWalletWasCreatedAlert == null ? false : true;
 
     super.initState();
   }
@@ -129,6 +137,16 @@ class _TabControllerScreenState extends State<TabControllerScreenWidget> {
                                 )))
                       ],
                     ))),
+            SizedBox.expand(
+                child: _isRecoveryPhraseCorrect
+                    ? VerifySuccessWidget(
+                        themeNotifier: _themeNotifier,
+                        onCloseTap: () => {
+                              setState(() {
+                                _isRecoveryPhraseCorrect = false;
+                              })
+                            })
+                    : Container())
           ],
         ));
   }

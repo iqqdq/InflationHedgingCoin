@@ -54,6 +54,10 @@ custom_switch
 2.1
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/custom_switch-0.0.1/
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/custom_switch-0.0.1/lib/
+dart_notification_center
+2.2
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dart_notification_center-1.0.0+1/
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dart_notification_center-1.0.0+1/lib/
 dashed_circle
 2.12
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dashed_circle-0.0.2/
@@ -62,6 +66,10 @@ dio
 2.4
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dio-3.0.10/
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dio-3.0.10/lib/
+dotted_border
+2.12
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dotted_border-2.0.0+1/
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dotted_border-2.0.0+1/lib/
 fake_async
 2.12
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/
@@ -98,6 +106,10 @@ flutter_spinkit
 2.5
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-4.1.2+1/
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-4.1.2+1/lib/
+flutter_tags
+2.0
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_tags-0.4.9+1/
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_tags-0.4.9+1/lib/
 http
 2.4
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2/
@@ -138,6 +150,14 @@ path
 2.12
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0/
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0/lib/
+path_drawing
+2.12
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_drawing-0.5.1+1/
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_drawing-0.5.1+1/lib/
+path_parsing
+2.12
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_parsing-0.2.1/
+file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_parsing-0.2.1/lib/
 path_provider
 2.12
 file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.4/
