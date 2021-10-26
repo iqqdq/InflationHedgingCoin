@@ -56,7 +56,7 @@ class _BackUpScreenState extends State<BackUpScreenWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GradientTextWidget(
-                      'In the next step you will\nsee 12 words that wllows\nyou to recover a wallet',
+                      'In the next step you will\nsee 12 words that allows\nyou to recover a wallet',
                       style: TextStyle(
                           fontFamily: 'NeoGramExtended',
                           fontSize: 16.0,
@@ -77,19 +77,20 @@ class _BackUpScreenState extends State<BackUpScreenWidget> {
                           splashColor: Colors.transparent,
                           onTap: () => checkboxDidTap(),
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               CheckboxWidget(
                                   themeNotifier: _themeNotifier,
                                   isSelected: _isCheckboxSelected,
                                   onTap: () => {checkboxDidTap()}),
-                              SizedBox(width: 14.0),
-                              Text(
-                                  'I understand that if I lose my recovery words,\nI will not be able to access my wallet',
-                                  style: TextStyle(
-                                      color: _themeNotifier.textColor,
-                                      fontFamily: 'Poppins',
-                                      fontSize: 12.0)),
+                              SizedBox(width: 24.0),
+                              Expanded(
+                                child: Text(
+                                    'I understand that if I lose my recovery words, I will not be able to access my wallet',
+                                    style: TextStyle(
+                                        color: _themeNotifier.textColor,
+                                        fontFamily: 'Poppins',
+                                        fontSize: 12.0)),
+                              )
                             ],
                           ),
                         ),

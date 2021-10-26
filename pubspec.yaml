@@ -43,7 +43,9 @@ dependencies:
   modal_bottom_sheet: ^2.0.0
   auto_size_text_field: ^1.0.1
   flutter_tags: ^0.4.9+1
+  material_tag_editor: any
   dart_notification_center: ^1.0.0+1
+  flutter_svg: ^0.23.0+1
 
 dev_dependencies:
   flutter_test:

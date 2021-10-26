@@ -9,7 +9,7 @@ class ThemeNotifier with ChangeNotifier {
   var buttonColor = HexColor("2A2F3B");
   var titleColor = Colors.white;
   var disabledTitleColor = Colors.white.withOpacity(0.2);
-  var disabledButtonColor = Colors.white.withOpacity(0.08);
+  var disabledButtonColor = HexColor("202125");
   var textColor = HexColor("7B7B92");
   var placeholderColor = HexColor("4C5366");
   var inputColor = HexColor("1D212C");
@@ -27,4 +27,6 @@ class ThemeNotifier with ChangeNotifier {
   var warningColor = HexColor("E35353");
   var warningBackgroundColor = HexColor("32191B");
   var recoveryPhraseBackground = HexColor("121419");
+  var circleAnimationColor = HexColor("2D313E");
+  var circleAnimationGradientColor = HexColor("1E2B46");
 }

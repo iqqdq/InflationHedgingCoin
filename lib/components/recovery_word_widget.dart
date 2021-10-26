@@ -48,6 +48,46 @@ class _RecoveryTagState extends State<RecoveryTagWidget> {
                                     DeviceHeight.MEDIUM
                                 ? 14.0
                                 : 16.0,
+                            color: widget.isVisible
+                                ? widget.themeNotifier.recoveryWordColor
+                                : Colors.transparent)),
+                widget.number == null ? Container() : SizedBox(width: 6.0),
+                Text(widget.word,
+                    style: TextStyle(
+                        fontSize: DeviceHeightDetector().getType() ==
+                                DeviceHeight.MEDIUM
+                            ? 14.0
+                            : 16.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'NeoGramExtended',
+                        color: widget.isVisible
+                            ? widget.themeNotifier.titleColor
+                            : Colors.transparent)),
+              ],
+            )));
+
+    final epmtyTag = FittedBox(
+        child: Container(
+            padding:
+                EdgeInsets.only(left: 6.0, top: 2.0, bottom: 2.0, right: 6.0),
+            decoration: BoxDecoration(
+                border: Border.all(
+                    width: 1.0,
+                    color: widget.isVisible
+                        ? widget.themeNotifier.placeholderColor
+                        : Colors.transparent),
+                borderRadius: BorderRadius.circular(10.0)),
+            child: Row(
+              children: [
+                widget.number == null
+                    ? Container()
+                    : Text(widget.number!,
+                        style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: DeviceHeightDetector().getType() ==
+                                    DeviceHeight.MEDIUM
+                                ? 14.0
+                                : 16.0,
                             color: widget.themeNotifier.recoveryWordColor)),
                 widget.number == null ? Container() : SizedBox(width: 6.0),
                 Text(widget.word,
@@ -64,18 +104,21 @@ class _RecoveryTagState extends State<RecoveryTagWidget> {
               ],
             )));
 
-    return Material(
-        color: Colors.transparent,
-        child: InkWell(
-            highlightColor: Colors.black38,
-            onTap: () => widget.onTap(),
-            borderRadius: BorderRadius.circular(10.0),
-            child: widget.isVisible
-                ? tag
-                : DottedBorder(
-                    color: widget.themeNotifier.placeholderColor,
-                    radius: Radius.circular(10.0),
-                    strokeWidth: 1,
-                    child: tag)));
+    return IgnorePointer(
+        ignoring: !widget.isVisible,
+        child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+                highlightColor: Colors.black38,
+                onTap: () => widget.onTap(),
+                borderRadius: BorderRadius.circular(10.0),
+                child: widget.isVisible
+                    ? tag
+                    : DottedBorder(
+                        color: widget.themeNotifier.placeholderColor,
+                        borderType: BorderType.RRect,
+                        radius: Radius.circular(10.0),
+                        strokeWidth: 1,
+                        child: epmtyTag))));
   }
 }

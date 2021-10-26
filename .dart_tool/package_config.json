@@ -170,6 +170,12 @@
       "languageVersion": "2.5"
     },
     {
+      "name": "flutter_svg",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.23.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_tags",
       "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_tags-0.4.9+1",
       "packageUri": "lib/",
@@ -208,6 +214,12 @@
     {
       "name": "matcher",
       "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "material_tag_editor",
+      "rootUri": "file:///Users/q/Development/flutter/.pub-cache/hosted/pub.dartlang.org/material_tag_editor-0.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -452,7 +464,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-25T00:03:34.227583Z",
+  "generated": "2021-10-26T17:56:00.131160Z",
   "generator": "pub",
   "generatorVersion": "2.14.0-4.0.dev"
 }

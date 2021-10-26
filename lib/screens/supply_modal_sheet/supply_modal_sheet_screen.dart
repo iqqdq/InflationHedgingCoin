@@ -7,6 +7,7 @@ import 'package:inflation_hedging_coin/components/close_button_widget.dart';
 import 'package:inflation_hedging_coin/components/qzn_footer_numeric_keyboard_widget.dart';
 import 'package:inflation_hedging_coin/components/qzn_segmented_control_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/supply_modal_sheet/components/max_button.dart';
 
 class SupplyModalSheetWidget extends StatefulWidget {
@@ -25,8 +26,6 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
   @override
   void initState() {
     super.initState();
-
-    _focusNode.requestFocus();
   }
 
   @override
@@ -152,6 +151,8 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
 
                 /// BODY
                 Expanded(
+                    child: UnfocusWidget(
+                  onTap: () => {setState(() {})},
                   child: ListView(
                     padding: EdgeInsets.only(
                         top: 20.0, left: 24.0, right: 24.0, bottom: 362.0),
@@ -204,14 +205,14 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
                                       ),
                                     ),
                                     style: style,
-                                    onTap: () => {},
+                                    onTap: () => {setState(() {})},
                                     onEditingComplete: () =>
                                         {FocusScope.of(context).unfocus()})),
                             SizedBox(width: 9.0),
 
                             /// TOKEN TITLE
                             Padding(
-                                padding: EdgeInsets.only(right: 16.0),
+                                padding: EdgeInsets.only(right: 4.0),
                                 child: Text('IHC',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
@@ -237,7 +238,7 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
                       getInfoRow('Borrow Limit Used', '0%'),
                     ],
                   ),
-                )
+                ))
               ])),
 
           /// KEYBOARD
@@ -245,7 +246,7 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
               alignment: Alignment.bottomCenter,
               child: QZNFooterNumericKeyboardWidget(
                   themeNotifier: _themeNotifier,
-                  showKeyboard: true,
+                  showKeyboard: _focusNode.hasFocus,
                   isEnterButtonEnabled: false,
                   enterButtonTitle: 'No funds available',
                   footerTitle: 'Wallet Balance',

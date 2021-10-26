@@ -110,7 +110,9 @@ class _QZNFooterNumericKeyboardState
         animation: _animation,
         builder: (BuildContext context, _) {
           return Container(
-              height: 362.0 * _animation.value,
+              height: DeviceHeightDetector().getType() == DeviceHeight.MEDIUM
+                  ? 320.0 * _animation.value
+                  : 348.0 * _animation.value,
               padding: EdgeInsets.only(
                   left: 24.0,
                   top: 20.0,
@@ -123,21 +125,22 @@ class _QZNFooterNumericKeyboardState
               child: Column(
                 children: [
                   /// KEYBOARD
-                  Expanded(
+                  Container(
+                      height: 180.0,
                       child: GridView.count(
-                    padding: EdgeInsets.zero,
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 10.0,
-                    mainAxisSpacing: 10.0,
-                    childAspectRatio: 2.8,
-                    children: List<Widget>.generate(11, (index) {
-                      return index == 9
-                          ? getRemoveButton(keyButtonWidth)
-                          : getKeyButton(
-                              index == 10 ? '0' : (index + 1).toString(),
-                              keyButtonWidth);
-                    }),
-                  )),
+                        padding: EdgeInsets.zero,
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 10.0,
+                        mainAxisSpacing: 10.0,
+                        childAspectRatio: 3.0,
+                        children: List<Widget>.generate(11, (index) {
+                          return index == 9
+                              ? getRemoveButton(keyButtonWidth)
+                              : getKeyButton(
+                                  index == 10 ? '0' : (index + 1).toString(),
+                                  keyButtonWidth);
+                        }),
+                      )),
                   SizedBox(height: 10.0),
 
                   /// ENTER BUTTON

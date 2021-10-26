@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/qzn_app_bar_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/screens/connecting_wallet/connecting_wallet.dart';
+import 'package:inflation_hedging_coin/screens/recovery_phrase/recovery_phrase.dart';
 import 'package:inflation_hedging_coin/screens/wallet_connect/components/recovery_phrase_button_widget.dart';
 import 'package:inflation_hedging_coin/screens/wallet_connect/components/wallet_connect_list_item.dart';
 
@@ -18,13 +20,17 @@ class _WalletConnectScreenState extends State<WalletConnectScreenWidget> {
   // MARK: -
   // MARK: - ACTIONS
 
-  void enterRecoveryPhraseDidTap() {}
+  void enterRecoveryPhraseDidTap() {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => RecoveryPhraseScreenWidget()));
+  }
 
   void walletDidTap(int index) {
-    // Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) => YourRecoveryPhraseScreenWidget()));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                ConnectingWalletScreenWidget(title: 'Rainbow', image: '')));
   }
 
   @override
@@ -66,7 +72,7 @@ class _WalletConnectScreenState extends State<WalletConnectScreenWidget> {
                                   offset: Offset(0, 24))
                             ]),
                         child: ListView.builder(
-                            padding: EdgeInsets.all(24.0),
+                            padding: EdgeInsets.all(16.0),
                             itemCount: 10,
                             itemBuilder: (context, index) {
                               return WalletConnectListItemWidget(

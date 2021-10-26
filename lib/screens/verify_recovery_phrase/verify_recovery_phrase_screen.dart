@@ -24,14 +24,22 @@ class _VerifyRecoveryPhraseScreenState
   final _themeNotifier = ThemeNotifier();
   List<String> _words = [];
   List<String> _selectedWords = [];
+  int _currentIndex = 0;
+  bool _isNotCorrect = false;
 
   @override
   void initState() {
-    super.initState();
-
-    setState(() {
-      _words = widget.words;
+    widget.words.forEach((word) {
+      _words.add(word);
     });
+
+    _words.shuffle();
+
+    _words.forEach((element) {
+      _selectedWords.add('');
+    });
+
+    super.initState();
   }
 
   @override
@@ -39,19 +47,42 @@ class _VerifyRecoveryPhraseScreenState
     super.dispose();
   }
 
+  void check() {
+    var i = 0;
+    _selectedWords.forEach((selectedWord) {
+      if (selectedWord != '') {
+        _isNotCorrect = selectedWord != widget.words[i];
+        i++;
+      }
+    });
+
+    print(_currentIndex);
+  }
+
   // MARK: -
   // MARK: - ACTIONS
 
   void wordDidTap(int index) {
     setState(() {
-      _selectedWords.add(_words[index]);
+      _selectedWords[_currentIndex] = _words[index];
+      _currentIndex = _currentIndex < _words.length - 1
+          ? _currentIndex++
+          : _words.length - 1;
+
+      if (_currentIndex < _words.length - 1) _currentIndex++;
+
+      check();
     });
   }
 
   void selectedWordDidTap(int index) {
     setState(() {
-      _selectedWords.removeAt(index);
+      _selectedWords[index] = '';
+
+      if (_currentIndex > 0) _currentIndex--;
     });
+
+    check();
   }
 
   void continueDidTap() {
@@ -101,19 +132,22 @@ class _VerifyRecoveryPhraseScreenState
                           children: [
                         /// SELECTED TAGS
                         Container(
-                          constraints: BoxConstraints(minHeight: 178.0),
+                          constraints: BoxConstraints(minHeight: 220.0),
                           padding: EdgeInsets.only(
                               left: 18.0, top: 10.0, right: 18.0, bottom: 10.0),
                           color: _themeNotifier.recoveryPhraseBackground,
                           child: Tags(
                               itemCount: _selectedWords.length,
                               itemBuilder: (int index) {
-                                return RecoveryTagWidget(
-                                    themeNotifier: _themeNotifier,
-                                    number: (index + 1).toString(),
-                                    word: _selectedWords[index],
-                                    isVisible: true,
-                                    onTap: () => {selectedWordDidTap(index)});
+                                return _selectedWords[index] != ''
+                                    ? RecoveryTagWidget(
+                                        themeNotifier: _themeNotifier,
+                                        number: (index + 1).toString(),
+                                        word: _selectedWords[index],
+                                        isVisible: true,
+                                        onTap: () =>
+                                            {selectedWordDidTap(index)})
+                                    : Container();
                               }),
                         ),
                         SizedBox(height: 24.0),
@@ -127,21 +161,43 @@ class _VerifyRecoveryPhraseScreenState
                                 return RecoveryTagWidget(
                                     themeNotifier: _themeNotifier,
                                     word: _words[index],
-                                    isVisible: true,
+                                    isVisible:
+                                        !_selectedWords.contains(_words[index]),
                                     onTap: () => {wordDidTap(index)});
                               }),
                         )
                       ])),
-
-                  /// CONTINUE BUTTON
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.0),
-                    child: QZNGradientButtonWidget(
-                        themeNotifier: _themeNotifier,
-                        title: 'Continue',
-                        isEnable: true,
-                        onTap: () => {continueDidTap()}),
-                  )
+                      padding: EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Column(
+                        children: [
+                          /// WARNING MESSAGE
+                          _isNotCorrect && _currentIndex > 0
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                      Image.asset('assets/ic_error.png'),
+                                      SizedBox(width: 10.0),
+                                      Text('Invalid order. Try again!',
+                                          style: TextStyle(
+                                              color:
+                                                  _themeNotifier.warningColor,
+                                              fontFamily: 'NeoGramExtended',
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold)),
+                                    ])
+                              : Container(),
+                          SizedBox(height: 24.0),
+
+                          /// CONTINUE BUTTON
+                          QZNGradientButtonWidget(
+                              themeNotifier: _themeNotifier,
+                              title: 'Continue',
+                              isEnable: !_isNotCorrect &&
+                                  !_selectedWords.contains(''),
+                              onTap: () => {continueDidTap()}),
+                        ],
+                      ))
                 ],
               )),
         ]));
