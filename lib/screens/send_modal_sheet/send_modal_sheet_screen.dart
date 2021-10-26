@@ -3,6 +3,7 @@ import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/app_bar_action_widget.dart';
 import 'package:inflation_hedging_coin/components/close_button_widget.dart';
+import 'package:inflation_hedging_coin/components/device_height_detector.dart';
 import 'package:inflation_hedging_coin/components/qzn_header_numeric_keyboard_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
@@ -22,6 +23,7 @@ class SendModalSheetWidget extends StatefulWidget {
 
 class _SendModalSheetState extends State<SendModalSheetWidget> {
   final _themeNotifier = ThemeNotifier();
+  final _scrollController = ScrollController();
   final TextEditingController _addressTextEditingController =
       TextEditingController();
   final FocusNode _addressFocusNode = FocusNode();
@@ -136,8 +138,7 @@ class _SendModalSheetState extends State<SendModalSheetWidget> {
               topLeft: Radius.circular(32.0),
               topRight: Radius.circular(32.0),
             )),
-        child: SizedBox.expand(
-            child: Stack(
+        child: Stack(
           children: [
             UnfocusWidget(
                 onTap: () => {setState(() {})},
@@ -173,169 +174,189 @@ class _SendModalSheetState extends State<SendModalSheetWidget> {
                         ],
                       ),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            /// WALLET INPUT
-                            Padding(
-                                padding: EdgeInsets.only(
-                                    left: 24.0, top: 12.0, right: 24.0),
-                                child: SendInputWidget(
-                                    themeNotifier: _themeNotifier,
-                                    title: 'To',
-                                    textEditingController:
-                                        _addressTextEditingController,
-                                    focusNode: _addressFocusNode)),
-                            _addressFocusNode.hasFocus ||
-                                    _addressTextEditingController.text.isEmpty
-                                ? Container(
-                                    margin: EdgeInsets.only(top: 20.0),
-                                    height: 0.25,
-                                    color: _themeNotifier.placeholderColor)
-                                : Container(),
-                            SizedBox(height: 10.0),
+                          child: ListView(
+                        controller: _scrollController,
+                        padding: EdgeInsets.zero,
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          /// WALLET INPUT
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 24.0, top: 12.0, right: 24.0),
+                              child: SendInputWidget(
+                                  themeNotifier: _themeNotifier,
+                                  title: 'To',
+                                  textEditingController:
+                                      _addressTextEditingController,
+                                  focusNode: _addressFocusNode)),
+                          _addressFocusNode.hasFocus ||
+                                  _addressTextEditingController.text.isEmpty
+                              ? Container(
+                                  margin: EdgeInsets.only(top: 20.0),
+                                  height: 0.25,
+                                  color: _themeNotifier.placeholderColor)
+                              : Container(),
+                          SizedBox(height: 10.0),
 
-                            /// RECENT LISTVIEW
-                            _addressFocusNode.hasFocus ||
-                                    _addressTextEditingController.text.isEmpty
-                                ? Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 20.0,
-                                        left: 24.0,
-                                        right: 24.0,
-                                        bottom: 20.0),
-                                    child: Text('Recent',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 16.0,
-                                            color: _themeNotifier
-                                                .placeholderColor)),
-                                  )
-                                : Container(),
+                          /// RECENT WALLET'S LISTVIEW
+                          _addressFocusNode.hasFocus ||
+                                  _addressTextEditingController.text.isEmpty
+                              ? Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 20.0,
+                                      left: 24.0,
+                                      right: 24.0,
+                                      bottom: 20.0),
+                                  child: Text('Recent',
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 16.0,
+                                          color:
+                                              _themeNotifier.placeholderColor)),
+                                )
+                              : Container(),
 
-                            _addressFocusNode.hasFocus ||
-                                    _addressTextEditingController.text.isEmpty
-                                ? Expanded(
-                                    child: ListView.builder(
-                                        padding: EdgeInsets.only(bottom: 40.0),
-                                        itemCount: 20,
-                                        itemBuilder: (context, index) {
-                                          return RecentListItemWidget(
-                                              themeNotifier: _themeNotifier,
-                                              wallet:
-                                                  '0x945534d19f03ec485020576b5bdc51a3303ca46f',
-                                              onTap: () =>
-                                                  {recentDidTap(index)});
-                                        }))
-                                : Container(),
+                          _addressFocusNode.hasFocus ||
+                                  _addressTextEditingController.text.isEmpty
+                              ? Container(
+                                  height: DeviceHeightDetector().getType() ==
+                                          DeviceHeight.MEDIUM
+                                      ? size.height / 2
+                                      : size.height - 340.0,
+                                  child: ListView.builder(
+                                      padding: EdgeInsets.only(bottom: 40.0),
+                                      itemCount: 20,
+                                      itemBuilder: (context, index) {
+                                        return RecentListItemWidget(
+                                            themeNotifier: _themeNotifier,
+                                            wallet:
+                                                '0x945534d19f03ec485020576b5bdc51a3303ca46f',
+                                            onTap: () => {recentDidTap(index)});
+                                      }))
+                              : Container(),
 
-                            /// TOKEN SELECTION
-                            _addressFocusNode.hasFocus ||
-                                    _addressTextEditingController.text.isEmpty
-                                ? Container()
-                                : Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 24.0),
-                                    child: SendTokenSelectionWidget(
-                                        themeNotifier: _themeNotifier,
-                                        image:
-                                            'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
-                                        name: 'IHC',
-                                        value: 125664356,
-                                        usdValue: 175694,
-                                        onTap: () => {tokenSelectionDidTap()})),
-                            SizedBox(height: 20.0),
-                            _addressFocusNode.hasFocus ||
-                                    _addressTextEditingController.text.isEmpty
-                                ? Container()
-                                : Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                        /// MAX BUTTON
-                                        MaxButtonWidget(
+                          /// TOKEN SELECTION
+                          _addressFocusNode.hasFocus ||
+                                  _addressTextEditingController.text.isEmpty
+                              ? Container()
+                              : Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 24.0),
+                                  child: SendTokenSelectionWidget(
+                                      themeNotifier: _themeNotifier,
+                                      image:
+                                          'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                                      name: 'IHC',
+                                      value: 125664356,
+                                      usdValue: 175694,
+                                      onTap: () => {tokenSelectionDidTap()})),
+                          SizedBox(height: 20.0),
+                          _addressFocusNode.hasFocus ||
+                                  _addressTextEditingController.text.isEmpty
+                              ? Container()
+                              : Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                      /// MAX BUTTON
+                                      Container(
+                                        margin: EdgeInsets.only(right: 9.0),
+                                        child: MaxButtonWidget(
                                             themeNotifier: _themeNotifier,
                                             onTap: () => {maxButtonDidTap()}),
-                                        SizedBox(width: 9.0),
+                                      ),
 
-                                        /// VALUE INPUT
-                                        Container(
-                                            width: _textFormFieldWidth < 30.0
-                                                ? 30.0
-                                                : _textFormFieldWidth,
-                                            constraints: BoxConstraints(
-                                                maxWidth:
-                                                    size.width - 124.0 - 48.0),
-                                            child: AutoSizeTextField(
-                                                showCursor: true,
-                                                readOnly: true,
-                                                focusNode: _valueFocusNode,
-                                                textAlign: TextAlign.center,
-                                                controller:
-                                                    _valueTextEditingController,
-                                                cursorColor: _themeNotifier
-                                                    .blueGradientColor,
-                                                textInputAction:
-                                                    TextInputAction.done,
-                                                decoration: InputDecoration(
-                                                  hintText: '0',
-                                                  hintStyle: style.copyWith(
-                                                      color: _themeNotifier
-                                                          .placeholderColor),
-                                                  contentPadding:
-                                                      EdgeInsets.zero,
-                                                  counterText: '',
-                                                  fillColor: Color.fromRGBO(
-                                                      21, 33, 47, 1.0),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                    ),
-                                                  ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                    ),
+                                      /// VALUE INPUT
+                                      Container(
+                                          margin: EdgeInsets.only(right: 9.0),
+                                          width: _textFormFieldWidth < 30.0
+                                              ? 30.0
+                                              : _textFormFieldWidth,
+                                          constraints: BoxConstraints(
+                                              maxWidth:
+                                                  size.width - 124.0 - 48.0),
+                                          child: AutoSizeTextField(
+                                              showCursor: true,
+                                              readOnly: true,
+                                              focusNode: _valueFocusNode,
+                                              textAlign: TextAlign.center,
+                                              controller:
+                                                  _valueTextEditingController,
+                                              cursorColor: _themeNotifier
+                                                  .blueGradientColor,
+                                              decoration: InputDecoration(
+                                                hintText: '0',
+                                                hintStyle: style.copyWith(
+                                                    color: _themeNotifier
+                                                        .placeholderColor),
+                                                contentPadding: EdgeInsets.zero,
+                                                counterText: '',
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
                                                   ),
                                                 ),
-                                                style: style,
-                                                onTap: () => {setState(() {})},
-                                                onEditingComplete: () => {
-                                                      FocusScope.of(context)
-                                                          .unfocus()
-                                                    })),
-                                        SizedBox(width: 9.0),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                  ),
+                                                ),
+                                              ),
+                                              style: style,
+                                              onTap: () => {
+                                                    _scrollController.animateTo(
+                                                      DeviceHeightDetector()
+                                                                  .getType() ==
+                                                              DeviceHeight
+                                                                  .MEDIUM
+                                                          ? 120.0
+                                                          : 0.0,
+                                                      curve: Curves.easeOut,
+                                                      duration: Duration(
+                                                          milliseconds: 300),
+                                                    ),
+                                                    setState(() {})
+                                                  },
+                                              onEditingComplete: () => {
+                                                    FocusScope.of(context)
+                                                        .unfocus()
+                                                  })),
 
-                                        /// TOKEN TITLE
-                                        Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 16.0),
-                                            child: Text('IHC',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 20.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: _themeNotifier
-                                                        .titleColor)))
-                                      ]),
+                                      /// TOKEN TITLE
+                                      Padding(
+                                          padding: EdgeInsets.only(right: 16.0),
+                                          child: Text('IHC',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: _themeNotifier
+                                                      .titleColor)))
+                                    ]),
 
-                            /// USD VALUE
-                            _addressFocusNode.hasFocus ||
-                                    _addressTextEditingController.text.isEmpty
-                                ? Container()
-                                : Align(
-                                    alignment: Alignment.center,
-                                    child: Text(r'$' + '$_usdValue',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 14.0,
-                                            color: _themeNotifier
-                                                .placeholderColor)))
-                          ],
-                        ),
-                      )
+                          /// USD VALUE
+                          _addressFocusNode.hasFocus ||
+                                  _addressTextEditingController.text.isEmpty
+                              ? Container()
+                              : Align(
+                                  alignment: Alignment.center,
+                                  child: Text(r'$' + '$_usdValue',
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 14.0,
+                                          color: _themeNotifier
+                                              .placeholderColor))),
+                          _valueFocusNode.hasFocus
+                              ? SizedBox(
+                                  height: DeviceHeightDetector().getType() ==
+                                          DeviceHeight.MEDIUM
+                                      ? 360.0
+                                      : 120.0)
+                              : Container()
+                        ],
+                      )),
                     ])),
 
             /// KEYBOARD
@@ -353,6 +374,6 @@ class _SendModalSheetState extends State<SendModalSheetWidget> {
                     onRemoveTap: () => {removeText()},
                     onEnterTap: () => {}))
           ],
-        )));
+        ));
   }
 }

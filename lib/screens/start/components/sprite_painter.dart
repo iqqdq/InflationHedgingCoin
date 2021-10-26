@@ -15,7 +15,7 @@ class SpritePainter extends CustomPainter {
     double radius = sqrt(area * value / 4);
 
     final Paint paint = new Paint()
-      ..shader = ui.Gradient.linear(rect.centerLeft, rect.centerRight, [
+      ..shader = ui.Gradient.radial(rect.centerLeft, radius * 4, [
         Color.fromARGB(76, 16, 17, 21),
         Color.fromARGB(76, 16, 17, 21),
         Color.fromARGB(76, 16, 22, 41),
@@ -35,7 +35,7 @@ class SpritePainter extends CustomPainter {
         1.0
       ]);
 
-    canvas.drawCircle(rect.center, radius * 3, paint);
+    canvas.drawCircle(rect.center, radius * 1.5, paint);
   }
 
   @override

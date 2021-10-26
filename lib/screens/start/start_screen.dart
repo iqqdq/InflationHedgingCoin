@@ -88,15 +88,14 @@ class _StartScreenState extends State<StartScreenWidget>
                   ),
                 ],
               )),
+
+          /// TITLE
           Padding(
               padding: EdgeInsets.only(
                   top: DeviceHeightDetector().getType() == DeviceHeight.MEDIUM
                       ? 120.0
                       : 160.0),
-              child:
-
-                  /// TITLE
-                  Center(
+              child: Center(
                 child: Text('Inflation\nHedging\nCoin',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -108,27 +107,30 @@ class _StartScreenState extends State<StartScreenWidget>
                         fontWeight: FontWeight.bold,
                         color: _themeNotifier.titleColor)),
               )),
+
+          /// CONNECT WALLET BUTTON
           Padding(
               padding: EdgeInsets.only(
                   left: 24.0, right: 24.0, bottom: padding.bottom + 12.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  /// CONNECT WALLET BUTTON
                   QZNGradientButtonWidget(
                       themeNotifier: _themeNotifier,
                       title: 'Connect Wallet',
                       isEnable: true,
                       onTap: () => {connectWalletDidTap()}),
-                  SizedBox(height: 16.0),
 
                   /// CREATE WALLET BUTTON
 
-                  CreateWalletButtonWidget(
-                      themeNotifier: _themeNotifier,
-                      title: 'Create Wallet',
-                      isEnable: true,
-                      onTap: () => {createWalletDidTap()})
+                  Container(
+                    margin: EdgeInsets.only(top: 16.0),
+                    child: CreateWalletButtonWidget(
+                        themeNotifier: _themeNotifier,
+                        title: 'Create Wallet',
+                        isEnable: true,
+                        onTap: () => {createWalletDidTap()}),
+                  )
                 ],
               ))
         ]));
