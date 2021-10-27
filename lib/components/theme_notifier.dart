@@ -29,4 +29,5 @@ class ThemeNotifier with ChangeNotifier {
   var recoveryPhraseBackground = HexColor("121419");
   var circleAnimationColor = HexColor("2D313E");
   var circleAnimationGradientColor = HexColor("1E2B46");
+  var defaultKeyabordColor = HexColor("141414");
 }

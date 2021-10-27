@@ -7,6 +7,7 @@ import 'package:inflation_hedging_coin/components/close_button_widget.dart';
 import 'package:inflation_hedging_coin/components/qzn_footer_numeric_keyboard_widget.dart';
 import 'package:inflation_hedging_coin/components/qzn_segmented_control_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/supply_modal_sheet/components/max_button.dart';
 
 class BorrowModalSheetWidget extends StatefulWidget {
@@ -26,7 +27,7 @@ class _BorrowModalSheetState extends State<BorrowModalSheetWidget> {
   void initState() {
     super.initState();
 
-    _focusNode.requestFocus();
+    // _focusNode.requestFocus();
   }
 
   @override
@@ -106,155 +107,161 @@ class _BorrowModalSheetState extends State<BorrowModalSheetWidget> {
         fontWeight: FontWeight.bold,
         color: _themeNotifier.titleColor);
 
-    return Container(
-      margin: EdgeInsets.only(top: 60.0),
-      decoration: BoxDecoration(
-          color: _themeNotifier.backgroundColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(32.0),
-            topRight: Radius.circular(32.0),
-          )),
-      child: SizedBox.expand(
-          child: Stack(
-        children: [
-          Padding(
-              padding: EdgeInsets.only(top: 16.0, bottom: 24.0),
-              child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    /// CLOSE BUTTON
-                    CloseButtonWidget(themeNotifier: _themeNotifier),
+    return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Container(
+          margin: EdgeInsets.only(top: 60.0),
+          decoration: BoxDecoration(
+              color: _themeNotifier.backgroundColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(32.0),
+                topRight: Radius.circular(32.0),
+              )),
+          child: SizedBox.expand(
+              child: Stack(
+            children: [
+              Padding(
+                  padding: EdgeInsets.only(top: 16.0, bottom: 24.0),
+                  child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        /// CLOSE BUTTON
+                        CloseButtonWidget(themeNotifier: _themeNotifier),
 
-                    /// TITLE
-                    Expanded(
-                        child: Center(
-                            child: Text('Borrow',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'NeoGramExtended',
-                                    color: _themeNotifier.titleColor)))),
-
-                    /// TOKEN IMAGE
-                    Padding(
-                        padding: EdgeInsets.only(right: 24.0),
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
-                          width: 40.0,
-                          height: 40.0,
-                          fit: BoxFit.cover,
-                        ))
-                  ],
-                ),
-
-                /// BODY
-                Expanded(
-                  child: ListView(
-                    padding: EdgeInsets.only(
-                        top: 20.0, left: 24.0, right: 24.0, bottom: 362.0),
-                    children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            /// MAX BUTTON
-                            MaxButtonWidget(
-                                themeNotifier: _themeNotifier,
-                                onTap: () => {maxButtonDidTap()}),
-                            SizedBox(width: 9.0),
-
-                            /// INPUT
-                            Container(
-                                width: _textFormFieldWidth < 30.0
-                                    ? 30.0
-                                    : _textFormFieldWidth,
-                                constraints: BoxConstraints(
-                                    maxWidth: size.width - 124.0 - 48.0),
-                                child: AutoSizeTextField(
-                                    showCursor: true,
-                                    readOnly: true,
-                                    focusNode: _focusNode,
-                                    textAlign: TextAlign.center,
-                                    keyboardType: TextInputType.number,
-                                    keyboardAppearance: Brightness.dark,
-                                    controller: _textEditingController,
-                                    cursorColor:
-                                        _themeNotifier.blueGradientColor,
-                                    textInputAction: TextInputAction.done,
-                                    decoration: InputDecoration(
-                                      hintText: '0',
-                                      hintStyle: style.copyWith(
-                                          color:
-                                              _themeNotifier.placeholderColor),
-                                      contentPadding: EdgeInsets.zero,
-                                      counterText: '',
-                                      fillColor:
-                                          Color.fromRGBO(21, 33, 47, 1.0),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                        ),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                        ),
-                                      ),
-                                    ),
-                                    style: style,
-                                    onTap: () => {},
-                                    onEditingComplete: () =>
-                                        {FocusScope.of(context).unfocus()})),
-                            SizedBox(width: 9.0),
-
-                            /// TOKEN TITLE
-                            Padding(
-                                padding: EdgeInsets.only(right: 16.0),
-                                child: Text('IHC',
+                        /// TITLE
+                        Expanded(
+                            child: Center(
+                                child: Text('Borrow',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.bold,
-                                        color: _themeNotifier.titleColor)))
-                          ]),
-                      SizedBox(height: 30.0),
+                                        fontFamily: 'NeoGramExtended',
+                                        color: _themeNotifier.titleColor)))),
 
-                      /// SEGMENTED CONTROL
-                      QZNSegmentedControlWidget(
-                          themeNotifier: _themeNotifier,
-                          width: size.width,
-                          titles: ['Supply', 'Withdraw'],
-                          onTap: (index) => {print('tab index is: $index')}),
-                      SizedBox(height: 24.0),
+                        /// TOKEN IMAGE
+                        Padding(
+                            padding: EdgeInsets.only(right: 24.0),
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                              width: 40.0,
+                              height: 40.0,
+                              fit: BoxFit.cover,
+                            ))
+                      ],
+                    ),
 
-                      /// INFO
-                      getInfoRow('Borrow APY', '0.08%'),
-                      getInfoRow('Distribution APY', '0%'),
-                      getInfoRow('Borrow Balance', r'$12000'),
-                      getInfoRow('Borrow Limit Used', '72%'),
-                    ],
-                  ),
-                )
-              ])),
+                    /// BODY
+                    Expanded(
+                        child: UnfocusWidget(
+                      onTap: () => {setState(() {})},
+                      child: ListView(
+                        padding: EdgeInsets.only(
+                            top: 20.0, left: 24.0, right: 24.0, bottom: 362.0),
+                        children: [
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                /// MAX BUTTON
+                                MaxButtonWidget(
+                                    themeNotifier: _themeNotifier,
+                                    onTap: () => {maxButtonDidTap()}),
+                                SizedBox(width: 9.0),
 
-          /// KEYBOARD
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: QZNFooterNumericKeyboardWidget(
-                  themeNotifier: _themeNotifier,
-                  showKeyboard: true,
-                  isEnterButtonEnabled: false,
-                  enterButtonTitle: 'Enter amount',
-                  footerTitle: 'Wallet Balance',
-                  footerValue: '0 IHC',
-                  didTapKeyButton: (text) => {setText(text)},
-                  onRemoveTap: () => {removeText()},
-                  onEnterTap: () => {}))
-        ],
-      )),
-    );
+                                /// INPUT
+                                Container(
+                                    width: _textFormFieldWidth < 30.0
+                                        ? 30.0
+                                        : _textFormFieldWidth,
+                                    constraints: BoxConstraints(
+                                        maxWidth: size.width - 124.0 - 48.0),
+                                    child: AutoSizeTextField(
+                                        showCursor: true,
+                                        readOnly: true,
+                                        focusNode: _focusNode,
+                                        textAlign: TextAlign.center,
+                                        keyboardType: TextInputType.number,
+                                        keyboardAppearance: Brightness.dark,
+                                        controller: _textEditingController,
+                                        cursorColor:
+                                            _themeNotifier.blueGradientColor,
+                                        textInputAction: TextInputAction.done,
+                                        decoration: InputDecoration(
+                                          hintText: '0',
+                                          hintStyle: style.copyWith(
+                                              color: _themeNotifier
+                                                  .placeholderColor),
+                                          contentPadding: EdgeInsets.zero,
+                                          counterText: '',
+                                          fillColor:
+                                              Color.fromRGBO(21, 33, 47, 1.0),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                            ),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                            ),
+                                          ),
+                                        ),
+                                        style: style,
+                                        onTap: () => {setState(() {})},
+                                        onEditingComplete: () => {
+                                              FocusScope.of(context).unfocus()
+                                            })),
+                                SizedBox(width: 9.0),
+
+                                /// TOKEN TITLE
+                                Padding(
+                                    padding: EdgeInsets.only(right: 16.0),
+                                    child: Text('IHC',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: _themeNotifier.titleColor)))
+                              ]),
+                          SizedBox(height: 30.0),
+
+                          /// SEGMENTED CONTROL
+                          QZNSegmentedControlWidget(
+                              themeNotifier: _themeNotifier,
+                              width: size.width,
+                              titles: ['Supply', 'Withdraw'],
+                              onTap: (index) =>
+                                  {print('tab index is: $index')}),
+                          SizedBox(height: 24.0),
+
+                          /// INFO
+                          getInfoRow('Borrow APY', '0.08%'),
+                          getInfoRow('Distribution APY', '0%'),
+                          getInfoRow('Borrow Balance', r'$12000'),
+                          getInfoRow('Borrow Limit Used', '72%'),
+                        ],
+                      ),
+                    ))
+                  ])),
+
+              /// KEYBOARD
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: QZNFooterNumericKeyboardWidget(
+                      themeNotifier: _themeNotifier,
+                      showKeyboard: _focusNode.hasFocus,
+                      isEnterButtonEnabled: false,
+                      enterButtonTitle: 'Enter amount',
+                      footerTitle: 'Wallet Balance',
+                      footerValue: '0 IHC',
+                      didTapKeyButton: (text) => {setText(text)},
+                      onRemoveTap: () => {removeText()},
+                      onEnterTap: () => {}))
+            ],
+          )),
+        ));
   }
 }

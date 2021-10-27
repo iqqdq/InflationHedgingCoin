@@ -45,7 +45,8 @@ dependencies:
   flutter_tags: ^0.4.9+1
   material_tag_editor: any
   dart_notification_center: ^1.0.0+1
-  flutter_svg: ^0.23.0+1
+  keyboard_actions: "^1.0.4"
+  qr_code_scanner: ^0.5.2
 
 dev_dependencies:
   flutter_test:

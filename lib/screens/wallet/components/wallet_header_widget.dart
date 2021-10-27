@@ -63,7 +63,7 @@ class _WalletHeaderState extends State<WalletHeaderWidget> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: 'NeoGramExtended',
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       fontSize: 40.0,
                       color: widget.themeNotifier.titleColor)),
             ),

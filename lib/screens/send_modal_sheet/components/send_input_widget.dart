@@ -63,6 +63,7 @@ class _SendInputState extends State<SendInputWidget> {
                   child: AutoSizeTextField(
                       focusNode: widget.focusNode,
                       textAlign: TextAlign.left,
+                      autocorrect: false,
                       keyboardAppearance: Brightness.dark,
                       controller: widget.textEditingController,
                       cursorColor: widget.themeNotifier.blueGradientColor,

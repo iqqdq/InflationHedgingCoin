@@ -77,7 +77,7 @@ class _WalletScreenState extends State<WalletScreenWidget> {
                       left: 24.0, top: padding.top + 12.0, right: 24.0),
                   child: WalletHeaderWidget(
                       themeNotifier: _themeNotifier,
-                      totalValue: 13451752,
+                      totalValue: 12324,
                       onReceiveTap: () => {receiveDidTap()},
                       onSendTap: () => {sendDidTap()},
                       onCopyTap: () => {copyDidTap()})),
