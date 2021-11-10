@@ -39,7 +39,9 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
   // MARK: -
   // MARK: - ACTIONS
 
-  void saveDidTap() {}
+  void saveDidTap() {
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -77,8 +77,7 @@ class _WalletConnectScreenState extends State<WalletConnectScreenWidget> {
                             itemBuilder: (context, index) {
                               return WalletConnectListItemWidget(
                                   themeNotifier: _themeNotifier,
-                                  image:
-                                      'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                                  image: 'https://thefloppa.com/ihc.png',
                                   name: 'Rainbow',
                                   onTap: () => {walletDidTap(index)});
                             })))

@@ -94,8 +94,7 @@ class _SwapScreenState extends State<SwapScreenWidget> {
                   focusNode: _toFocusNode,
                   title: 'To',
                   name: 'IHC',
-                  image:
-                      'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                  image: 'https://thefloppa.com/ihc.png',
                   onTokenTap: () => {selectTokenDidTap(1)}),
               SizedBox(height: 20.0),
 

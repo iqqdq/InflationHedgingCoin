@@ -1,7 +1,9 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:inflation_hedging_coin/components/qzn_toast_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/components/transparent_route.dart';
 import 'package:inflation_hedging_coin/screens/send_modal_sheet/send_modal_sheet_screen.dart';
 import 'package:inflation_hedging_coin/screens/token_transaction/token_transaction_screen.dart';
 import 'package:inflation_hedging_coin/screens/wallet/components/wallet_address_widget.dart';
@@ -19,8 +21,6 @@ class WalletScreenWidget extends StatefulWidget {
 
 class _WalletScreenState extends State<WalletScreenWidget> {
   final _themeNotifier = ThemeNotifier();
-  bool _showToast = false;
-  bool _showReceive = false;
 
   @override
   void initState() {
@@ -31,9 +31,10 @@ class _WalletScreenState extends State<WalletScreenWidget> {
   // MARK: - ACTIONS
 
   void receiveDidTap() {
-    setState(() {
-      _showReceive = true;
-    });
+    Navigator.of(context).push(TransparentRoute(
+        builder: (BuildContext context) => WalletAddressWidget(
+            themeNotifier: _themeNotifier,
+            walletAddress: '0x490dbf7884b8e13c2161448b83dd2d8909db48ed')));
   }
 
   void sendDidTap() {
@@ -50,8 +51,14 @@ class _WalletScreenState extends State<WalletScreenWidget> {
   }
 
   void copyDidTap() {
-    setState(() {
-      _showToast = true;
+    Clipboard.setData(new ClipboardData(
+            text: '0x490dbf7884b8e13c2161448b83dd2d8909db48ed'))
+        .then((_) {
+      Navigator.of(context).push(TransparentRoute(
+          builder: (BuildContext context) => QZNToastWidget(
+              themeNotifier: _themeNotifier,
+              image: 'assets/ic_check.png',
+              text: 'Your address was copied successfully!')));
     });
   }
 
@@ -68,58 +75,34 @@ class _WalletScreenState extends State<WalletScreenWidget> {
 
     return Scaffold(
         backgroundColor: _themeNotifier.backgroundColor,
-        body: SizedBox.expand(
-            child: Stack(children: [
-          Column(
-            children: [
-              Padding(
-                  padding: EdgeInsets.only(
-                      left: 24.0, top: padding.top + 12.0, right: 24.0),
-                  child: WalletHeaderWidget(
-                      themeNotifier: _themeNotifier,
-                      totalValue: 12324,
-                      onReceiveTap: () => {receiveDidTap()},
-                      onSendTap: () => {sendDidTap()},
-                      onCopyTap: () => {copyDidTap()})),
-              Expanded(
-                  child: ListView.builder(
-                      padding: EdgeInsets.only(top: 32.0, bottom: 100.0),
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return WalletListItemWidget(
-                            themeNotifier: _themeNotifier,
-                            image:
-                                'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
-                            name: 'GPYX',
-                            value: 126753542,
-                            onTap: () => {tokenDidTap(index)});
-                      }))
-            ],
-          ),
-          _showReceive
-              ? WalletAddressWidget(
-                  themeNotifier: _themeNotifier,
-                  walletAddress: '0x490dbf7884b8e13c2161448b83dd2d8909db48ed',
-                  qrData: '0x490dbf7884b8e13c2161448b83dd2d8909db48ed',
-                  onShareTap: () => {shareDidTap()},
-                  onCopyTap: () => {copyDidTap()},
-                  onCloseTap: () => {
-                        setState(() {
-                          _showReceive = false;
-                        })
-                      })
-              : Container(),
-          _showToast
-              ? QZNToastWidget(
-                  themeNotifier: _themeNotifier,
-                  image: 'assets/ic_check.png',
-                  text: 'Your address was copied successfully!',
-                  timerDidStop: () => {
-                        setState(() {
-                          _showToast = false;
-                        })
-                      })
-              : Container()
-        ])));
+        body: Stack(
+          children: [
+            /// LIST
+            Padding(
+                padding: EdgeInsets.only(top: 232.0),
+                child: ListView.builder(
+                    padding: EdgeInsets.only(top: 44.0, bottom: 100.0),
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return WalletListItemWidget(
+                          themeNotifier: _themeNotifier,
+                          image: 'https://thefloppa.com/ihc.png',
+                          name: 'IHC',
+                          value: 126753542,
+                          onTap: () => {tokenDidTap(index)});
+                    })),
+
+            /// HEADER
+            Padding(
+                padding: EdgeInsets.only(
+                    left: 24.0, top: padding.top + 12.0, right: 24.0),
+                child: WalletHeaderWidget(
+                    themeNotifier: _themeNotifier,
+                    totalValue: 12324,
+                    onReceiveTap: () => {receiveDidTap()},
+                    onSendTap: () => {sendDidTap()},
+                    onCopyTap: () => {copyDidTap()})),
+          ],
+        ));
   }
 }

@@ -49,14 +49,12 @@ class _SupplyScreenState extends State<SupplyScreenWidget> {
           title: 'Inflation Hedging\nCoin',
         ),
         backgroundColor: _themeNotifier.backgroundColor,
-        body: SizedBox.expand(
-            child: Stack(children: [
-          SingleChildScrollView(
-              child: Column(
+        body: Stack(children: [
+          ListView(
             children: [
               /// HORIZONTAL LIST
               Container(
-                  margin: EdgeInsets.only(top: 142.0, bottom: 24.0),
+                  margin: EdgeInsets.only(bottom: 24.0),
                   height: 86.0,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -72,17 +70,20 @@ class _SupplyScreenState extends State<SupplyScreenWidget> {
                       })),
 
               /// SEGMENTED CONTROL
-              QZNSegmentedControlWidget(
-                  themeNotifier: _themeNotifier,
-                  width: size.width,
-                  titles: ['Supply', 'Remove'],
-                  onTap: (index) => {tabDidTap(index)}),
+              Container(
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: QZNSegmentedControlWidget(
+                        themeNotifier: _themeNotifier,
+                        width: size.width - 48.0,
+                        titles: ['Supply', 'Remove'],
+                        onTap: (index) => {tabDidTap(index)},
+                      ))),
 
               /// SUPPLY
               SupplyItemWidget(
                   themeNotifier: _themeNotifier,
-                  image:
-                      'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                  image: 'https://thefloppa.com/ihc.png',
                   name: 'IHC',
                   action: _selectedTab == 0 ? 'supply' : 'receive',
                   value: 150000,
@@ -90,13 +91,15 @@ class _SupplyScreenState extends State<SupplyScreenWidget> {
                   depositValue: 159000,
                   onMaxTap: () => {}),
               SizedBox(height: 22.0),
-              Image.asset('assets/ic_arrow_down.png'),
+              Container(
+                height: 24.0,
+                child: Image.asset('assets/ic_arrow_down.png'),
+              ),
 
               /// RECEIVE
               ReceiveItemWidget(
                   themeNotifier: _themeNotifier,
-                  image:
-                      'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                  image: 'https://thefloppa.com/ihc.png',
                   name: 'IHC',
                   action: _selectedTab == 0 ? 'receive' : 'remove',
                   value: 150000,
@@ -105,7 +108,7 @@ class _SupplyScreenState extends State<SupplyScreenWidget> {
                   feeValue: 0.05),
               SizedBox(height: 40.0)
             ],
-          )),
-        ])));
+          ),
+        ]));
   }
 }

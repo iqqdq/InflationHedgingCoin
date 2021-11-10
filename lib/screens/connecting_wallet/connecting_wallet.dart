@@ -80,8 +80,7 @@ class _ConnectingWalletScreenState extends State<ConnectingWalletScreenWidget>
             /// TOKEN IMAGE
             Center(
               child: CachedNetworkImage(
-                  imageUrl:
-                      'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                  imageUrl: 'https://thefloppa.com/ihc.png',
                   width: 80.0,
                   height: 80.0,
                   fit: BoxFit.cover),

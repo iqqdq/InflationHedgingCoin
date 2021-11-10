@@ -132,30 +132,39 @@ class _VerifyRecoveryPhraseScreenState
                           children: [
                         /// SELECTED TAGS
                         Container(
-                          constraints: BoxConstraints(minHeight: 220.0),
-                          padding: EdgeInsets.only(
-                              left: 18.0, top: 10.0, right: 18.0, bottom: 10.0),
-                          color: _themeNotifier.recoveryPhraseBackground,
-                          child: Tags(
-                              itemCount: _selectedWords.length,
-                              itemBuilder: (int index) {
-                                return _selectedWords[index] != ''
-                                    ? RecoveryTagWidget(
-                                        themeNotifier: _themeNotifier,
-                                        number: (index + 1).toString(),
-                                        word: _selectedWords[index],
-                                        isVisible: true,
-                                        onTap: () =>
-                                            {selectedWordDidTap(index)})
-                                    : Container();
-                              }),
-                        ),
+                            height: 200.0,
+                            padding: EdgeInsets.only(
+                                left: 18.0,
+                                top: 16.0,
+                                right: 18.0,
+                                bottom: 16.0),
+                            color: _themeNotifier.recoveryPhraseBackground,
+                            child: ClipRRect(
+                                child: Tags(
+                                    spacing: 0.0,
+                                    runSpacing: 0.0,
+                                    itemCount: _selectedWords.length,
+                                    itemBuilder: (int index) {
+                                      return _selectedWords[index] != ''
+                                          ? RecoveryTagWidget(
+                                              themeNotifier: _themeNotifier,
+                                              number: (index + 1).toString(),
+                                              word: _selectedWords[index],
+                                              isVisible: true,
+                                              onTap: () =>
+                                                  {selectedWordDidTap(index)})
+                                          : Container();
+                                    }))),
                         SizedBox(height: 24.0),
 
                         /// TAGS
-                        Padding(
-                          padding: EdgeInsets.only(left: 18.0, right: 18.0),
+                        Container(
+                          height: 200.0,
+                          padding: EdgeInsets.only(
+                              left: 18.0, top: 16.0, right: 18.0, bottom: 0.0),
                           child: Tags(
+                              spacing: 0.0,
+                              runSpacing: 0.0,
                               itemCount: _words.length,
                               itemBuilder: (int index) {
                                 return RecoveryTagWidget(

@@ -91,6 +91,8 @@ class _YourRecoveryPhraseScreenState
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 18.0),
                           child: Tags(
+                              spacing: 0.0,
+                              runSpacing: 0.0,
                               itemCount: _words.length,
                               itemBuilder: (int index) {
                                 return IgnorePointer(

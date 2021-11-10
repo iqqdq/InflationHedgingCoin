@@ -2,7 +2,7 @@
     package="com.example.inflation_hedging_coin">
    <application
         android:label="inflation_hedging_coin"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

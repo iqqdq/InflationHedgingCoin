@@ -4,8 +4,8 @@ import 'package:inflation_hedging_coin/components/device_height_detector.dart';
 import 'package:inflation_hedging_coin/components/qzn_gradient_button_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
 import 'package:inflation_hedging_coin/screens/back_up/back_up_screen.dart';
+import 'package:inflation_hedging_coin/screens/start/components/circle_animation_widget.dart';
 import 'package:inflation_hedging_coin/screens/start/components/create_wallet_button_widget.dart';
-import 'package:inflation_hedging_coin/screens/start/components/sprite_painter.dart';
 import 'package:inflation_hedging_coin/screens/wallet_connect/wallet_connect_screen.dart';
 
 class StartScreenWidget extends StatefulWidget {
@@ -62,7 +62,6 @@ class _StartScreenState extends State<StartScreenWidget>
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
 
     return Scaffold(
@@ -73,13 +72,14 @@ class _StartScreenState extends State<StartScreenWidget>
               child: Stack(
                 children: [
                   /// ANIMATION
-                  CustomPaint(
-                      painter:
-                          SpritePainter(_themeNotifier, _animationController),
-                      child: SizedBox(
-                        width: size.height * 4,
-                        height: size.height * 4,
-                      )),
+                  // CustomPaint(
+                  //     painter:
+                  //         SpritePainter(_themeNotifier, _animationController),
+                  //     child: SizedBox(
+                  //       width: size.height * 4,
+                  //       height: size.height * 4,
+                  //     )),
+                  CircleAnimationWidget(themeNotifier: _themeNotifier),
 
                   /// LOGO IMAGE
                   Center(

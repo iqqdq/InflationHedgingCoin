@@ -23,7 +23,6 @@ class SwapDetailsWidget extends StatefulWidget {
   final int status;
   final DateTime dateTime;
   final String link;
-  final VoidCallback onCloseTap;
 
   SwapDetailsWidget(
       {required this.themeNotifier,
@@ -37,26 +36,13 @@ class SwapDetailsWidget extends StatefulWidget {
       required this.feeETHValue,
       required this.status,
       required this.dateTime,
-      required this.link,
-      required this.onCloseTap});
+      required this.link});
 
   @override
   _SwapDetailsState createState() => _SwapDetailsState();
 }
 
-class _SwapDetailsState extends State<SwapDetailsWidget>
-    with TickerProviderStateMixin {
-  late AnimationController _animationController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _animationController = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this);
-    _animationController.forward();
-  }
-
+class _SwapDetailsState extends State<SwapDetailsWidget> {
   @override
   Widget build(BuildContext context) {
     final style = TextStyle(
@@ -74,24 +60,32 @@ class _SwapDetailsState extends State<SwapDetailsWidget>
         ? '${widget.dateTime.minute}'
         : '0${widget.dateTime.minute}';
 
-    return FadeTransition(
-        opacity: _animationController.drive(CurveTween(curve: Curves.easeOut)),
-        child: SizedBox.expand(
+    return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(children: [
+          SizedBox.expand(
+              child: InkWell(
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
             child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 24.0),
-                color: widget.themeNotifier.backgroundColor.withOpacity(0.9),
-                child: Center(
-                    child: Container(
-                        constraints: BoxConstraints(maxHeight: 424.0),
-                        padding: EdgeInsets.all(18.0),
-                        decoration: BoxDecoration(
-                          color: widget.themeNotifier.tableColor,
-                          border: Border.all(
-                              width: 1.0,
-                              color: widget.themeNotifier.outlineColor),
-                          borderRadius: BorderRadius.circular(24.0),
-                        ),
-                        child: Column(
+                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                color: widget.themeNotifier.backgroundColor.withOpacity(0.9)),
+            onTap: () => Navigator.pop(context),
+          )),
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: Center(
+                  child: Container(
+                      padding: EdgeInsets.all(18.0),
+                      decoration: BoxDecoration(
+                        color: widget.themeNotifier.tableColor,
+                        border: Border.all(
+                            width: 1.0,
+                            color: widget.themeNotifier.outlineColor),
+                        borderRadius: BorderRadius.circular(24.0),
+                      ),
+                      child: Wrap(children: [
+                        Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
@@ -113,10 +107,7 @@ class _SwapDetailsState extends State<SwapDetailsWidget>
                                   Padding(
                                       padding: EdgeInsets.only(bottom: 4.0),
                                       child: InkWell(
-                                        onTap: () => {
-                                          _animationController.reverse().then(
-                                              (value) => widget.onCloseTap())
-                                        },
+                                        onTap: () => Navigator.pop(context),
                                         child:
                                             Image.asset('assets/ic_close.png'),
                                       )),
@@ -224,6 +215,8 @@ class _SwapDetailsState extends State<SwapDetailsWidget>
                                           image: 'assets/ic_arrow_link.png',
                                           isImageOnRight: true,
                                           onTap: () => {})))
-                            ]))))));
+                            ])
+                      ]))))
+        ]));
   }
 }

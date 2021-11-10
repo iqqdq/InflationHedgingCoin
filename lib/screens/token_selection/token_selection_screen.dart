@@ -56,9 +56,8 @@ class _TokenSelectionScreenState extends State<TokenSelectionScreenWidget> {
                       itemBuilder: (context, index) {
                         return TokenSelectionItemWidget(
                             themeNotifier: _themeNotifier,
-                            image:
-                                'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
-                            name: 'GPYX',
+                            image: 'https://thefloppa.com/ihc.png',
+                            name: 'IHC',
                             onTap: () => {tokenDidTap(index)});
                       }))
             ],

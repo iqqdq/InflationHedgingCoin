@@ -76,18 +76,18 @@ class _YieldScreenState extends State<YieldScreenWidget> {
                       themeNotifier: _themeNotifier,
                       selectedIndex: _selectedTab,
                       onTap: (index) => {tabDidTap(index)})),
+              SizedBox(height: 12.0),
 
               /// LIST
               Expanded(
                   child: ListView.builder(
                       padding: EdgeInsets.only(
-                          left: 24.0, top: 24.0, right: 24.0, bottom: 100.0),
+                          left: 24.0, top: 12.0, right: 24.0, bottom: 100.0),
                       itemCount: 2,
                       itemBuilder: (context, index) {
                         return YieldListItemWidget(
                             themeNotifier: _themeNotifier,
-                            image:
-                                'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                            image: 'https://thefloppa.com/ihc.png',
                             name: 'IHC',
                             percentValue: 2.83,
                             usdValue: 810700000,

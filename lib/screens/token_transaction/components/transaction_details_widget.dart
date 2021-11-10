@@ -21,9 +21,7 @@ class TransactionDetailsWidget extends StatefulWidget {
   final int status;
   final String walletAddress;
   final DateTime dateTime;
-
   final VoidCallback onLinkTap;
-  final VoidCallback onCloseTap;
 
   TransactionDetailsWidget({
     required this.themeNotifier,
@@ -36,26 +34,13 @@ class TransactionDetailsWidget extends StatefulWidget {
     required this.walletAddress,
     required this.dateTime,
     required this.onLinkTap,
-    required this.onCloseTap,
   });
 
   @override
   _TransactionDetailsState createState() => _TransactionDetailsState();
 }
 
-class _TransactionDetailsState extends State<TransactionDetailsWidget>
-    with TickerProviderStateMixin {
-  late AnimationController _animationController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _animationController = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this);
-    _animationController.forward();
-  }
-
+class _TransactionDetailsState extends State<TransactionDetailsWidget> {
   @override
   Widget build(BuildContext context) {
     final titleStyle = TextStyle(
@@ -85,11 +70,11 @@ class _TransactionDetailsState extends State<TransactionDetailsWidget>
     final date = DateFormat.yMMMd().format(widget.dateTime);
     final time = DateFormat.Hm().format(widget.dateTime);
 
-    return FadeTransition(
-        opacity: _animationController.drive(CurveTween(curve: Curves.easeOut)),
-        child: SizedBox.expand(
+    return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SizedBox.expand(
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 24.0),
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
             color: widget.themeNotifier.backgroundColor.withOpacity(0.9),
             child: Center(
               child: Container(
@@ -119,11 +104,7 @@ class _TransactionDetailsState extends State<TransactionDetailsWidget>
                         Padding(
                             padding: EdgeInsets.only(left: 10.0, bottom: 10.0),
                             child: InkWell(
-                              onTap: () => {
-                                _animationController
-                                    .reverse()
-                                    .then((value) => widget.onCloseTap())
-                              },
+                              onTap: () => Navigator.pop(context),
                               child: Image.asset('assets/ic_close.png'),
                             )),
                       ],

@@ -40,6 +40,7 @@ class _AvailableAssetsModalSheetState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: Container(
             margin: EdgeInsets.only(top: 120.0),
@@ -108,8 +109,8 @@ class _AvailableAssetsModalSheetState
                                           return WalletListItemWidget(
                                               themeNotifier: _themeNotifier,
                                               image:
-                                                  'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
-                                              name: 'GPYX',
+                                                  'https://thefloppa.com/ihc.png',
+                                              name: 'IHC',
                                               value: 126753542,
                                               onTap: () =>
                                                   {tokenDidTap(index)});

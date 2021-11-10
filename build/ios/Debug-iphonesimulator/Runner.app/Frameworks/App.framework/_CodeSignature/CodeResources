@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		dYnHHio/V7d/yOGV5y/oRlR4K7w=
+		KcOF0rLWKyySbOb+sKb8bKori8A=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>flutter_assets/NOTICES</key>
 		<data>
-		xOlBhvKZE1CAglML49Vex1ir3AY=
+		JkuJ1D8pwfNg7it3Lu1iy1OAK2Y=
 		</data>
 		<key>flutter_assets/assets/2.0x/ic_arrow_back.png</key>
 		<data>
@@ -340,6 +340,10 @@
 		<data>
 		HsnPilA8iwT1kj8j2HaV1HVg0BE=
 		</data>
+		<key>flutter_assets/assets/app_icon.png</key>
+		<data>
+		WAxYtf+1Z0CWh4cAVvYRsl9wCpk=
+		</data>
 		<key>flutter_assets/assets/ic_arrow_back.png</key>
 		<data>
 		Zujomsu6MhUX7yteyDK1YU2YEr0=
@@ -522,7 +526,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		wYKq4Z2j+if4DVTkwZVvx0BVuBs=
+		hjwpA4XyigBkwAgxY0Yu3LWtx30=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -539,11 +543,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			dYnHHio/V7d/yOGV5y/oRlR4K7w=
+			KcOF0rLWKyySbOb+sKb8bKori8A=
 			</data>
 			<key>hash2</key>
 			<data>
-			UtB/JLELVv9PKCOClPAXMQapakPa8bplraCEl6NizHU=
+			uqaU1RGhiCh08t5CVUBMGM1rAZL2Ai0CVyX9cOf2nQ4=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -561,11 +565,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xOlBhvKZE1CAglML49Vex1ir3AY=
+			JkuJ1D8pwfNg7it3Lu1iy1OAK2Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			DjbHbkca/aDBFdzUkM4CTKb6fQTwdNP3EXsYe2f6/O8=
+			hR9rwV1eEU1WTvRyFuri4zpTULrwdi9wfOcuNS8DoUo=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/2.0x/ic_arrow_back.png</key>
@@ -1448,6 +1452,17 @@
 			KmEuuWddNIWANDnOEpHD4QEAmvbFjAfOQqpRUKWplaw=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/app_icon.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			WAxYtf+1Z0CWh4cAVvYRsl9wCpk=
+			</data>
+			<key>hash2</key>
+			<data>
+			TEY7cFMcef7JL++h1A2VU4q5yDL7dpOBk3OchQ8w1H8=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/ic_arrow_back.png</key>
 		<dict>
 			<key>hash</key>
@@ -1947,11 +1962,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wYKq4Z2j+if4DVTkwZVvx0BVuBs=
+			hjwpA4XyigBkwAgxY0Yu3LWtx30=
 			</data>
 			<key>hash2</key>
 			<data>
-			T5L0fJ2J987gutJI0VTnhikotvIFtb3SUHT8+mcHJgI=
+			dGb0TdBkTk9IBswVRgAeGeSVOMDWn2HlyXqN6FfEk/A=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

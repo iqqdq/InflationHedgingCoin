@@ -18,6 +18,8 @@ class AppBarActionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
         child: Container(
             height: 40.0,
             child: Center(

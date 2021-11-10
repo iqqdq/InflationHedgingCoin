@@ -119,8 +119,7 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
               child: Stack(
             children: [
               Padding(
-                  padding: EdgeInsets.only(
-                      left: 0.0, top: 16.0, right: 12.0, bottom: 24.0),
+                  padding: EdgeInsets.only(top: 16.0, bottom: 24.0),
                   child: Column(children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,10 +139,9 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
 
                         /// TOKEN IMAGE
                         Padding(
-                            padding: EdgeInsets.only(right: 12.0),
+                            padding: EdgeInsets.only(right: 24.0),
                             child: CachedNetworkImage(
-                              imageUrl:
-                                  'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                              imageUrl: 'https://thefloppa.com/ihc.png',
                               width: 40.0,
                               height: 40.0,
                               fit: BoxFit.cover,
@@ -211,11 +209,11 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
                                         onEditingComplete: () => {
                                               FocusScope.of(context).unfocus()
                                             })),
-                                SizedBox(width: 9.0),
+                                SizedBox(width: 10.0),
 
                                 /// TOKEN TITLE
                                 Padding(
-                                    padding: EdgeInsets.only(right: 4.0),
+                                    padding: EdgeInsets.only(right: 12.0),
                                     child: Text('IHC',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -229,7 +227,7 @@ class _SupplyModalSheetState extends State<SupplyModalSheetWidget> {
                           /// SEGMENTED CONTROL
                           QZNSegmentedControlWidget(
                               themeNotifier: _themeNotifier,
-                              width: size.width,
+                              width: size.width - 48.0,
                               titles: ['Supply', 'Withdraw'],
                               onTap: (index) =>
                                   {print('tab index is: $index')}),

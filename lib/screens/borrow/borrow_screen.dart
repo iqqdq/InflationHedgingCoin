@@ -138,8 +138,7 @@ class _BorrowScreenState extends State<BorrowScreenWidget> {
                       itemBuilder: (context, index) {
                         return BorrowListItemWidget(
                             themeNotifier: _themeNotifier,
-                            image:
-                                'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                            image: 'https://thefloppa.com/ihc.png',
                             name: 'IHC',
                             percentValue: 90.93,
                             balanceValue: 143455549,
@@ -170,8 +169,7 @@ class _BorrowScreenState extends State<BorrowScreenWidget> {
                       itemBuilder: (context, index) {
                         return BorrowListItemWidget(
                             themeNotifier: _themeNotifier,
-                            image:
-                                'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                            image: 'https://thefloppa.com/ihc.png',
                             name: 'IHC',
                             percentValue: 90.93,
                             balanceValue: 143455549,

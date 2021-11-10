@@ -26,13 +26,12 @@ class _QZNSegmentedControlWidgetState extends State<QZNSegmentedControlWidget>
 
   @override
   Widget build(BuildContext context) {
-    final _padding = 4.0;
-    final _width =
-        (widget.width - 48.0 - (_padding * 2)) / widget.titles.length;
+    final padding = 4.0;
+    final width = widget.width / widget.titles.length - padding;
 
     return Container(
-        padding: EdgeInsets.all(_padding),
-        width: widget.width - 48.0,
+        padding: EdgeInsets.all(padding),
+        width: widget.width,
         height: 44.0,
         decoration: BoxDecoration(
             color: widget.themeNotifier.segmentedControlColor,
@@ -43,13 +42,15 @@ class _QZNSegmentedControlWidgetState extends State<QZNSegmentedControlWidget>
               children: [
                 AnimatedContainer(
                   duration: Duration(milliseconds: 150),
-                  width: _width * _selectedIndex,
+                  width: _selectedIndex == 0
+                      ? width * _selectedIndex
+                      : width * _selectedIndex,
                   decoration: BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(24.0)),
                 ),
                 Container(
-                  width: _width,
+                  width: _selectedIndex == 0 ? width + padding : width,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.centerLeft,
@@ -78,7 +79,7 @@ class _QZNSegmentedControlWidgetState extends State<QZNSegmentedControlWidget>
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       child: Container(
-                          width: _width,
+                          width: width,
                           height: 36.0,
                           decoration: BoxDecoration(
                               color: Colors.transparent,

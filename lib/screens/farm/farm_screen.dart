@@ -42,8 +42,7 @@ class _FarmScreenState extends State<FarmScreenWidget> {
               itemBuilder: (context, index) {
                 return FarmListItemWidget(
                     themeNotifier: _themeNotifier,
-                    image:
-                        'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                    image: 'https://thefloppa.com/ihc.png',
                     title: 'IHC Pool',
                     depositName: 'IHC',
                     earnName: 'IHC',

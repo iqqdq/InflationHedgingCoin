@@ -36,6 +36,7 @@ class _WalletHeaderState extends State<WalletHeaderWidget> {
 
     return Container(
         padding: EdgeInsets.only(top: 14.0, bottom: 18.0),
+        height: 200.0,
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(

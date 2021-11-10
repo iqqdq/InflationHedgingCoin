@@ -184,6 +184,7 @@ class _QZNHeaderNumericKeyboardState
                   Container(
                       height: 180.0,
                       child: GridView.count(
+                        physics: NeverScrollableScrollPhysics(),
                         padding: EdgeInsets.zero,
                         crossAxisCount: 3,
                         crossAxisSpacing: 10.0,

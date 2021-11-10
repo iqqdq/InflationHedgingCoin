@@ -6,14 +6,9 @@ class QZNToastWidget extends StatefulWidget {
   final ThemeNotifier themeNotifier;
   final String? image;
   final String text;
-  final VoidCallback timerDidStop;
 
   const QZNToastWidget(
-      {Key? key,
-      required this.text,
-      this.image,
-      required this.timerDidStop,
-      required this.themeNotifier})
+      {Key? key, required this.text, this.image, required this.themeNotifier})
       : super(key: key);
 
   @override
@@ -25,7 +20,7 @@ class _QZNToastState extends State<QZNToastWidget>
   late AnimationController _animationController;
   late Animation<double> _animation;
   late Timer _timer;
-  int _start = 3;
+  int _start = 2;
 
   @override
   void initState() {
@@ -33,7 +28,7 @@ class _QZNToastState extends State<QZNToastWidget>
 
     _animationController = new AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 180),
+      duration: const Duration(milliseconds: 150),
     );
 
     _animation = new CurvedAnimation(
@@ -54,16 +49,15 @@ class _QZNToastState extends State<QZNToastWidget>
   }
 
   void startTimer() {
-    const oneSec = const Duration(seconds: 1);
     _timer = new Timer.periodic(
-      oneSec,
+      Duration(seconds: 1),
       (Timer timer) {
         if (_start == 0) {
           setState(() {
             timer.cancel();
             _animationController
                 .reverse()
-                .then((value) => widget.timerDidStop());
+                .then((value) => Navigator.pop(context));
           });
         } else {
           setState(() {
@@ -79,50 +73,63 @@ class _QZNToastState extends State<QZNToastWidget>
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
 
-    return AnimatedBuilder(
-        animation: _animation,
-        builder: (BuildContext context, _) {
-          return InkWell(
-              onTap: () => {
-                    _animationController
-                        .reverse()
-                        .then((value) => widget.timerDidStop()),
-                  },
-              child: Container(
-                  margin: EdgeInsets.only(
-                      left: 24.0,
-                      top: padding.top * _animation.value,
-                      right: 24.0),
-                  padding: EdgeInsets.only(
-                      left: 14.0, top: 10.0, bottom: 10.0, right: 14.0),
-                  width: size.width,
-                  height: 64.0 * _animation.value,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24.0),
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          widget.themeNotifier.blueGradientColor,
-                          widget.themeNotifier.pinkGradientColor
-                        ],
-                      )),
-                  child: Row(
-                    children: [
-                      widget.image == null
-                          ? Container()
-                          : Image.asset(widget.image!),
-                      SizedBox(width: 14.0),
-                      Expanded(
-                        child: Text(widget.text,
-                            style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w500,
-                                color: widget.themeNotifier.titleColor)),
-                      )
-                    ],
-                  )));
-        });
+    return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(children: [
+          InkWell(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              onTap: () => _animationController
+                  .reverse()
+                  .then((value) => Navigator.pop(context)),
+              child: SizedBox.expand()),
+          AnimatedBuilder(
+              animation: _animation,
+              builder: (BuildContext context, _) {
+                return InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onTap: () => {
+                          _animationController
+                              .reverse()
+                              .then((value) => Navigator.pop(context))
+                        },
+                    child: Container(
+                        margin: EdgeInsets.only(
+                            left: 24.0,
+                            top: padding.top * _animation.value,
+                            right: 24.0),
+                        padding: EdgeInsets.only(
+                            left: 14.0, top: 10.0, bottom: 10.0, right: 14.0),
+                        width: size.width,
+                        height: 64.0 * _animation.value,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24.0),
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                widget.themeNotifier.blueGradientColor,
+                                widget.themeNotifier.pinkGradientColor
+                              ],
+                            )),
+                        child: Row(
+                          children: [
+                            widget.image == null
+                                ? Container()
+                                : Image.asset(widget.image!),
+                            SizedBox(width: 14.0),
+                            Expanded(
+                              child: Text(widget.text,
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w500,
+                                      color: widget.themeNotifier.titleColor)),
+                            )
+                          ],
+                        )));
+              })
+        ]));
   }
 }

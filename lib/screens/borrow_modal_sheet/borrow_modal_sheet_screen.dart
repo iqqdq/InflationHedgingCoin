@@ -144,8 +144,7 @@ class _BorrowModalSheetState extends State<BorrowModalSheetWidget> {
                         Padding(
                             padding: EdgeInsets.only(right: 24.0),
                             child: CachedNetworkImage(
-                              imageUrl:
-                                  'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                              imageUrl: 'https://thefloppa.com/ihc.png',
                               width: 40.0,
                               height: 40.0,
                               fit: BoxFit.cover,
@@ -213,11 +212,11 @@ class _BorrowModalSheetState extends State<BorrowModalSheetWidget> {
                                         onEditingComplete: () => {
                                               FocusScope.of(context).unfocus()
                                             })),
-                                SizedBox(width: 9.0),
+                                SizedBox(width: 10.0),
 
                                 /// TOKEN TITLE
                                 Padding(
-                                    padding: EdgeInsets.only(right: 16.0),
+                                    padding: EdgeInsets.only(right: 12.0),
                                     child: Text('IHC',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -231,7 +230,7 @@ class _BorrowModalSheetState extends State<BorrowModalSheetWidget> {
                           /// SEGMENTED CONTROL
                           QZNSegmentedControlWidget(
                               themeNotifier: _themeNotifier,
-                              width: size.width,
+                              width: size.width - 48.0,
                               titles: ['Supply', 'Withdraw'],
                               onTap: (index) =>
                                   {print('tab index is: $index')}),

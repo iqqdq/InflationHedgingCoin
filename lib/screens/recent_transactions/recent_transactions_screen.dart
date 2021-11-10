@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:inflation_hedging_coin/components/qzn_app_bar_widget.dart';
 import 'package:inflation_hedging_coin/components/theme_notifier.dart';
+import 'package:inflation_hedging_coin/components/transparent_route.dart';
 import 'package:inflation_hedging_coin/components/unfocus_widget.dart';
 import 'package:inflation_hedging_coin/screens/recent_transactions/components/recent_transaction_item.dart';
 import 'package:inflation_hedging_coin/screens/recent_transactions/components/swap_details.dart';
@@ -17,7 +18,46 @@ class RecentTransactionsScreenWidget extends StatefulWidget {
 class _RecentTransactionsScreenState
     extends State<RecentTransactionsScreenWidget> {
   final _themeNotifier = ThemeNotifier();
-  bool _showSwapDetails = true;
+
+  // MARK: -
+  // MARK: - FUNCTIONS
+
+  void showSwapDetails() {
+    Navigator.of(context).push(TransparentRoute(
+        builder: (BuildContext context) => SwapDetailsWidget(
+            themeNotifier: _themeNotifier,
+            fromImage: 'https://thefloppa.com/ihc.png',
+            fromValue: 150000,
+            fromName: 'IHC',
+            toImage: 'https://thefloppa.com/ihc.png',
+            toValue: 10500,
+            toName: 'IHC',
+            feeUSDValue: 25,
+            feeETHValue: 0.00125,
+            status: 0,
+            dateTime: DateTime.now(),
+            link: 'link')));
+  }
+
+  // MARK: -
+  // MARK: - ACTIONS
+
+  void itemDidTap(int index) {
+    Navigator.of(context).push(TransparentRoute(
+        builder: (BuildContext context) => SwapDetailsWidget(
+            themeNotifier: _themeNotifier,
+            fromImage: 'https://thefloppa.com/ihc.png',
+            fromValue: 150000,
+            fromName: 'IHC',
+            toImage: 'https://thefloppa.com/ihc.png',
+            toValue: 10500,
+            toName: 'IHC',
+            feeUSDValue: 25,
+            feeETHValue: 0.00125,
+            status: 0,
+            dateTime: DateTime.now(),
+            link: 'link')));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,38 +82,15 @@ class _RecentTransactionsScreenState
                 return RecentTransactionListItemWidget(
                     themeNotifier: _themeNotifier,
                     showDate: index == 0,
-                    fromImage:
-                        'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
-                    fromName: 'GPYX',
+                    fromImage: 'https://thefloppa.com/ihc.png',
+                    fromName: 'IHC',
                     fromValue: 164353425,
                     toName: 'IHC',
-                    toImage:
-                        'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                    toImage: 'https://thefloppa.com/ihc.png',
                     toValue: 200,
-                    dateTime: DateTime.now());
-              }),
-          _showSwapDetails
-              ? SwapDetailsWidget(
-                  themeNotifier: _themeNotifier,
-                  fromImage:
-                      'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
-                  fromValue: 150000,
-                  fromName: 'IHC',
-                  toImage:
-                      'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
-                  toValue: 10500,
-                  toName: 'IHC',
-                  feeUSDValue: 25,
-                  feeETHValue: 0.00125,
-                  status: 0,
-                  dateTime: DateTime.now(),
-                  link: 'link',
-                  onCloseTap: () => {
-                        setState(() {
-                          _showSwapDetails = false;
-                        })
-                      })
-              : Container(),
+                    dateTime: DateTime.now(),
+                    onTap: () => itemDidTap(index));
+              })
         ]))));
   }
 }

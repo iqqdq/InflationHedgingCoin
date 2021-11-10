@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		CTr31tl5de9f269g9d3UXAAWQo4=
+		NSEdEZ7LljQIowoQn2XKDGYo3oI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -25,10 +25,6 @@
 	<dict>
 		<key>Headers/FlutterMoneyFormatterPlugin.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			C9zm8xR1Djr2NHIReZA6Qphk87k=
-			</data>
 			<key>hash2</key>
 			<data>
 			SsZCs1RqKVQWvBoo9XbhdpcIU2sQCElS2fMAv2tIbs4=
@@ -36,10 +32,6 @@
 		</dict>
 		<key>Headers/flutter_money_formatter-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			31VscprkYy3NYw3qXNaMTf7qeMk=
-			</data>
 			<key>hash2</key>
 			<data>
 			+DLAYCEgwHw1N5z7w99stjvffTj/m7yD4DbYp6BSSaU=
@@ -47,10 +39,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			skz3AcDJAK8XIr18GzDfZxHovGk=
-			</data>
 			<key>hash2</key>
 			<data>
 			y1QkCfw8P37PKJknC8FgSo4duAQmZKyftvqq9vG1CvE=

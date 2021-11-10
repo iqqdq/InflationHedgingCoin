@@ -247,7 +247,7 @@ class _SendModalSheetState extends State<SendModalSheetWidget>
                                       child: SendTokenSelectionWidget(
                                           themeNotifier: _themeNotifier,
                                           image:
-                                              'https://s2.coinmarketcap.com/static/img/coins/64x64/3349.png',
+                                              'https://thefloppa.com/ihc.png',
                                           name: 'IHC',
                                           value: 125664356,
                                           usdValue: 175694,
